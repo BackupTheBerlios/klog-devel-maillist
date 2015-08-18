@@ -1,0 +1,462 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Klog-devel] Fwd: [Klog-svn] r55 - trunk/src
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/klog-devel/2009-October/index.html" >
+   <LINK REL="made" HREF="mailto:klog-devel%40lists.berlios.de?Subject=Re%3A%20%5BKlog-devel%5D%20Fwd%3A%20%5BKlog-svn%5D%20r55%20-%20trunk/src&In-Reply-To=%3C4CA9D892-37BA-4BBF-B76C-0C862FE5621A%40robles.es%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000016.html">
+   <LINK REL="Next"  HREF="000018.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Klog-devel] Fwd: [Klog-svn] r55 - trunk/src</H1>
+    <B>Jaime Robles</B> 
+    <A HREF="mailto:klog-devel%40lists.berlios.de?Subject=Re%3A%20%5BKlog-devel%5D%20Fwd%3A%20%5BKlog-svn%5D%20r55%20-%20trunk/src&In-Reply-To=%3C4CA9D892-37BA-4BBF-B76C-0C862FE5621A%40robles.es%3E"
+       TITLE="[Klog-devel] Fwd: [Klog-svn] r55 - trunk/src">jaime at robles.es
+       </A><BR>
+    <I>Thu Oct  8 21:13:47 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000016.html">[Klog-devel] Dxcluster options
+</A></li>
+        <LI>Next message: <A HREF="000018.html">[Klog-devel] Klog-devel Digest, Vol 2, Issue 6
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#17">[ date ]</a>
+              <a href="thread.html#17">[ thread ]</a>
+              <a href="subject.html#17">[ subject ]</a>
+              <a href="author.html#17">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Andrew,
+
+You have just overwritten the r54! :-( and these changes were lost...  
+Any idea about how to recover them &quot;automagically&quot;.
+
+Jaime
+
+Inicio del mensaje reenviado:
+
+&gt;<i> De: agoldie at BerliOS &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/klog-devel">agoldie at mail.berlios.de</A>&gt;
+</I>&gt;<i> Fecha: 8 de octubre de 2009 20:49:30 GMT+02:00
+</I>&gt;<i> Para: <A HREF="https://lists.berlios.de/mailman/listinfo/klog-devel">klog-svn at lists.berlios.de</A>
+</I>&gt;<i> Asunto: [Klog-svn] r55 - trunk/src
+</I>&gt;<i>
+</I>
+&gt;<i> Author: agoldie
+</I>&gt;<i> Date: 2009-10-08 20:49:30 +0200 (Thu, 08 Oct 2009)
+</I>&gt;<i> New Revision: 55
+</I>&gt;<i>
+</I>&gt;<i> Modified:
+</I>&gt;<i>   trunk/src/klog.cpp
+</I>&gt;<i>   trunk/src/klog.h
+</I>&gt;<i>   trunk/src/klog.ui
+</I>&gt;<i> Log:
+</I>&gt;<i> Add listwidget
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Modified: trunk/src/klog.cpp
+</I>&gt;<i> ===================================================================
+</I>&gt;<i> --- trunk/src/klog.cpp    2009-10-08 18:40:19 UTC (rev 54)
+</I>&gt;<i> +++ trunk/src/klog.cpp    2009-10-08 18:49:30 UTC (rev 55)
+</I>&gt;<i> @@ -99,17 +99,16 @@
+</I>&gt;<i>     //connect(helpIndexAction, SIGNAL(triggered()), this, SLOT 
+</I>&gt;<i> (helpIndex()));
+</I>&gt;<i>     connect(iotaIntSpinBox, SIGNAL(valueChanged(int)), this, SLOT 
+</I>&gt;<i> (slotIOTAChanged()));
+</I>&gt;<i>     connect(iotaComboBox, SIGNAL(activated(QString)), this, SLOT 
+</I>&gt;<i> (slotIOTAChanged()));
+</I>&gt;<i> -//    connect(awardsComboBox, SIGNAL(textChanged(QString)), this,  
+</I>&gt;<i> SLOT(slotLocalAwardChanged()));
+</I>&gt;<i> +    connect(awardsComboBox, SIGNAL(textChanged(QString)), this, SLOT 
+</I>&gt;<i> (slotLocalAwardChanged()));
+</I>&gt;<i>     connect(toolsMerge_QSO_dataAction, SIGNAL(triggered()), this,  
+</I>&gt;<i> SLOT(slotcompleteThePreviouslyWorked()));
+</I>&gt;<i>     connect(ActionCabrilloImport, SIGNAL(triggered()), this, SLOT 
+</I>&gt;<i> (slotImportCabrillo()));
+</I>&gt;<i>     connect(qrzLineEdit, SIGNAL(textChanged(QString)), this, SLOT 
+</I>&gt;<i> (slotQrzChanged()));
+</I>&gt;<i>     connect(logTreeWidget, SIGNAL(itemDoubleClicked(QTreeWidgetItem  
+</I>&gt;<i> *, int)), this, SLOT(slotQsoSelectedForEdit(QTreeWidgetItem *, int)));
+</I>&gt;<i> -    connect(logTreeWidget, SIGNAL(itemClicked(QTreeWidgetItem *,  
+</I>&gt;<i> int)), this, SLOT(slotQsoRightButtonFromLog(QTreeWidgetItem *, int)));
+</I>&gt;<i>     connect(searchQsosTreeWidget, SIGNAL(itemDoubleClicked 
+</I>&gt;<i> (QTreeWidgetItem *, int)), this, SLOT(slotQsoSearchSelectedForEdit 
+</I>&gt;<i> (QTreeWidgetItem *, int)));
+</I>&gt;<i> -    connect(dxclusterTreeWidget, SIGNAL(itemDoubleClicked 
+</I>&gt;<i> (QTreeWidgetItem *, int)), this, SLOT(slotClusterSpotToLog 
+</I>&gt;<i> (QTreeWidgetItem *, int)));
+</I>&gt;<i> +    connect(dxclusterListWidget, SIGNAL(itemDoubleClicked 
+</I>&gt;<i> (QListWidgetItem *, int)), this, SLOT(slotClusterSpotToLog 
+</I>&gt;<i> (QListWidgetItem *, int)));
+</I>&gt;<i>     connect(ActionQsoDelete, SIGNAL(triggered()), this, SLOT 
+</I>&gt;<i> (slotQsoDelete()));
+</I>&gt;<i> -    connect(ActionQslRec, SIGNAL(triggered()), this, SLOT(slotQSLRec 
+</I>&gt;<i> ()));
+</I>&gt;<i> -    connect(ActionQsoSen, SIGNAL(triggered()), this, SLOT 
+</I>&gt;<i> (slotQSLSent()));
+</I>&gt;<i> +    connect(ActionQslRec, SIGNAL(triggered()), this, SLOT 
+</I>&gt;<i> (slotQSLRec));
+</I>&gt;<i> +    connect(ActionQsoSen, SIGNAL(triggered()), this, SLOT 
+</I>&gt;<i> (slotQSLSent));
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> @@ -185,7 +184,6 @@
+</I>&gt;<i> //qDebug() &lt;&lt; &quot;KLog::~KLog&quot;;
+</I>&gt;<i> }
+</I>&gt;<i>
+</I>&gt;<i> -
+</I>&gt;<i> bool Klog::haveWorld(){
+</I>&gt;<i>     //qDebug() &lt;&lt; &quot;KLog::haveWorld&quot;;
+</I>&gt;<i>     //TODO:setTextFormat(Qt::RichText) to display an URL as a link
+</I>&gt;<i> @@ -1469,33 +1467,15 @@
+</I>&gt;<i>
+</I>&gt;<i> }
+</I>&gt;<i>
+</I>&gt;<i> -void Klog::mousePressEvent(QMouseEvent *event){
+</I>&gt;<i> -qDebug() &lt;&lt; &quot;KLog::mousePressEvent&quot;;
+</I>&gt;<i> -  if (event-&gt;button() == Qt::LeftButton) {
+</I>&gt;<i> -qDebug() &lt;&lt; &quot;KLog::mousePressEvent-left&quot;;
+</I>&gt;<i> -  }else if (event-&gt;button() == Qt::RightButton) {
+</I>&gt;<i> -qDebug() &lt;&lt; &quot;KLog::mousePressEvent-right&quot;;
+</I>&gt;<i> -  }
+</I>&gt;<i> -  lastPoint = event-&gt;pos();
+</I>&gt;<i> -//  logTreeWidget
+</I>&gt;<i> -}
+</I>&gt;<i> -
+</I>&gt;<i> -void Klog::mouseMoveEvent(QMouseEvent *event){}
+</I>&gt;<i> -void Klog::mouseReleaseEvent(QMouseEvent *event){}
+</I>&gt;<i> -
+</I>&gt;<i> //TODO: DELETED FOR QT4 MIGRATION: Add the rightbutton
+</I>&gt;<i> -void Klog::slotQsoRightButtonFromLog(QTreeWidgetItem * item, int){
+</I>&gt;<i> - qDebug()  &lt;&lt; &quot;KLog::slotQsoRightButtonFromLog&quot;;
+</I>&gt;<i> -
+</I>&gt;<i> - if (QApplication::mouseButtons()==Qt::RightButton){
+</I>&gt;<i> -   qDebug()  &lt;&lt; &quot;KLog::slotQsoRightButtonFromLog: right button&quot;;
+</I>&gt;<i> -    if (item){
+</I>&gt;<i> -        Klog::j = (item-&gt;text(0)).toInt(); // j is the QSO number
+</I>&gt;<i> -        //showMenuRightButton(Klog::j, p);
+</I>&gt;<i> -    }
+</I>&gt;<i> -  }
+</I>&gt;<i> -}
+</I>&gt;<i> -
+</I>&gt;<i> +// void Klog::slotQsoRightButtonFromLog(QTreeWidgetItem * item,  
+</I>&gt;<i> const QPoint &amp;p){
+</I>&gt;<i> +// //cout &lt;&lt; &quot;KLog::slotQsoRightButtonFromLog&quot; &lt;&lt; endl;
+</I>&gt;<i> +//    if (item){
+</I>&gt;<i> +//        Klog::j = (item-&gt;text(0)).toInt(); // j is the QSO number
+</I>&gt;<i> +//        showMenuRightButton(Klog::j, p);
+</I>&gt;<i> +//    }
+</I>&gt;<i> +// }
+</I>&gt;<i> +//
+</I>&gt;<i> // void Klog::slotQsoRightButtonFromSearch(QTreeWidgetItem * item,  
+</I>&gt;<i> const QPoint &amp;p){
+</I>&gt;<i> // //Maybe This could be deleted and use the previous  
+</I>&gt;<i> &quot;slotQsoRightButtonFromLog&quot; to perform
+</I>&gt;<i> // // this actions...
+</I>&gt;<i> @@ -4117,9 +4097,9 @@
+</I>&gt;<i>     connect( socket, SIGNAL(error(int)), SLOT(slotClusterSocketError 
+</I>&gt;<i> (int)) );
+</I>&gt;<i>     // connect to the server
+</I>&gt;<i>
+</I>&gt;<i> -    dxclusterTreeWidget-&gt;setSortingEnabled ( false);
+</I>&gt;<i> +    dxclusterListWidget-&gt;setSortingEnabled ( false);
+</I>&gt;<i>     downTabs-&gt;setCurrentIndex(1); // We set the active tab to be the  
+</I>&gt;<i> cluster's
+</I>&gt;<i> -    dxClusterSpotItem * item = new dxClusterSpotItem 
+</I>&gt;<i> (dxclusterTreeWidget, i18n(&quot;Trying to connect to the server\n&quot;),  
+</I>&gt;<i> defaultColor);
+</I>&gt;<i> +    dxClusterSpotItem * item = new dxClusterSpotItem 
+</I>&gt;<i> (dxclusterListWidget, i18n(&quot;Trying to connect to the server\n&quot;),  
+</I>&gt;<i> defaultColor);
+</I>&gt;<i>     socket-&gt;connectToHost( DXClusterServerToUse.section(':',0,0),  
+</I>&gt;<i> (DXClusterServerToUse.section(':',1,1)).toInt() );
+</I>&gt;<i> }
+</I>&gt;<i>
+</I>&gt;<i> @@ -4315,7 +4295,7 @@
+</I>&gt;<i>         dxSpotColor = defaultColor;
+</I>&gt;<i>     }
+</I>&gt;<i>     if (dxClusterString.length()&gt;=5){
+</I>&gt;<i> -        dxClusterSpotItem * item = new dxClusterSpotItem 
+</I>&gt;<i> (dxclusterTreeWidget, dxClusterString, dxSpotColor);
+</I>&gt;<i> +        dxClusterSpotItem * item = new dxClusterSpotItem 
+</I>&gt;<i> (dxclusterListWidget, dxClusterString, dxSpotColor);
+</I>&gt;<i>         dxSpotColor = defaultColor; // The color should be default  
+</I>&gt;<i> by default
+</I>&gt;<i>     }
+</I>&gt;<i>     }
+</I>&gt;<i> @@ -4323,7 +4303,7 @@
+</I>&gt;<i>
+</I>&gt;<i> void Klog::slotClusterSocketConnected(){
+</I>&gt;<i> //qDebug() &lt;&lt; &quot;KLog::slotClusterSocketConnected&quot; &lt;&lt; endl;
+</I>&gt;<i> -    dxClusterSpotItem * item = new dxClusterSpotItem 
+</I>&gt;<i> (dxclusterTreeWidget, i18n(&quot;Connected to server&quot;), defaultColor);
+</I>&gt;<i> +    dxClusterSpotItem * item = new dxClusterSpotItem 
+</I>&gt;<i> (dxclusterListWidget, i18n(&quot;Connected to server&quot;), defaultColor);
+</I>&gt;<i>     dxClusterConnected = true;
+</I>&gt;<i>
+</I>&gt;<i>     if ( dxClusterConnected ) {
+</I>&gt;<i> @@ -4340,13 +4320,13 @@
+</I>&gt;<i>
+</I>&gt;<i> void Klog::slotClusterSocketConnectionClosed(){
+</I>&gt;<i> //qDebug() &lt;&lt; &quot;KLog::slotClusterSocketConnectionClosed&quot; &lt;&lt; endl;
+</I>&gt;<i> -    dxClusterSpotItem * item = new dxClusterSpotItem 
+</I>&gt;<i> (dxclusterTreeWidget, i18n(&quot;Connection closed by the server&quot;),  
+</I>&gt;<i> defaultColor);
+</I>&gt;<i> +    dxClusterSpotItem * item = new dxClusterSpotItem 
+</I>&gt;<i> (dxclusterListWidget, i18n(&quot;Connection closed by the server&quot;),  
+</I>&gt;<i> defaultColor);
+</I>&gt;<i>     dxClusterConnected = false;
+</I>&gt;<i> }
+</I>&gt;<i>
+</I>&gt;<i> void Klog::slotClusterSocketClosed(){
+</I>&gt;<i> //qDebug() &lt;&lt; &quot;KLog::slotClusterSocketCluster&quot; &lt;&lt; endl;
+</I>&gt;<i> -    dxClusterSpotItem * item = new dxClusterSpotItem 
+</I>&gt;<i> (dxclusterTreeWidget, i18n(&quot;Connection closed&quot;), defaultColor );
+</I>&gt;<i> +    dxClusterSpotItem * item = new dxClusterSpotItem 
+</I>&gt;<i> (dxclusterListWidget, i18n(&quot;Connection closed&quot;), defaultColor );
+</I>&gt;<i>     dxClusterConnected = false;
+</I>&gt;<i> }
+</I>&gt;<i>
+</I>&gt;<i> @@ -4400,7 +4380,7 @@
+</I>&gt;<i>
+</I>&gt;<i>     } */
+</I>&gt;<i>
+</I>&gt;<i> -  dxClusterSpotItem * item = new dxClusterSpotItem 
+</I>&gt;<i> (dxclusterTreeWidget, i18n(&quot;Error number %1 occurred&quot;).arg(e),  
+</I>&gt;<i> defaultColor);
+</I>&gt;<i> +  dxClusterSpotItem * item = new dxClusterSpotItem 
+</I>&gt;<i> (dxclusterListWidget, i18n(&quot;Error number %1 occurred&quot;).arg(e),  
+</I>&gt;<i> defaultColor);
+</I>&gt;<i> }
+</I>&gt;<i>
+</I>&gt;<i> void Klog::slotClusterClearInputLine(){
+</I>&gt;<i> @@ -4437,10 +4417,10 @@
+</I>&gt;<i>
+</I>&gt;<i> // This takes a DX-spot from the DXCluster window and copies to the  
+</I>&gt;<i> QSO entry box
+</I>&gt;<i> // when the user clicks on it.
+</I>&gt;<i> -void Klog::slotClusterSpotToLog(QTreeWidgetItem * item, int){
+</I>&gt;<i> +void Klog::slotClusterSpotToLog(QListWidgetItem * item, int row){
+</I>&gt;<i> //cout &lt;&lt; &quot;KLog::slotClusterSpotToLog&quot; &lt;&lt; endl;
+</I>&gt;<i>     if (item)
+</I>&gt;<i> -        dxClusterString = item-&gt;text(0);
+</I>&gt;<i> +        dxClusterString = item-&gt;text();
+</I>&gt;<i>     else
+</I>&gt;<i>         return;
+</I>&gt;<i>     slotClearBtn();
+</I>&gt;<i> @@ -4472,10 +4452,10 @@
+</I>&gt;<i>     showWhere(enti);
+</I>&gt;<i> }
+</I>&gt;<i>
+</I>&gt;<i> -void Klog::slotClusterSpotCheck(QTreeWidgetItem * item){
+</I>&gt;<i> +void Klog::slotClusterSpotCheck(QListWidgetItem * item){
+</I>&gt;<i> //cout &lt;&lt; &quot;KLog::slotClusterSpotCheck&quot; &lt;&lt; endl;
+</I>&gt;<i>   if (item)
+</I>&gt;<i> -    dxClusterString = item-&gt;text(0);
+</I>&gt;<i> +    dxClusterString = item-&gt;text();
+</I>&gt;<i>   else{
+</I>&gt;<i>     //cout &lt;&lt; &quot;KLog: slotClusterSpotCheck Limpiamos con  
+</I>&gt;<i> clearEntityBox-1&quot; &lt;&lt; endl;
+</I>&gt;<i>     clearEntityBox();
+</I>&gt;<i> @@ -5157,14 +5137,14 @@
+</I>&gt;<i> **  
+</I>&gt;<i> spots. 
+</I>&gt;<i>                                                                  **
+</I>&gt;<i> ** It may be moved to a self .h &amp; .cpp  
+</I>&gt;<i> archives                           **
+</I>&gt;<i> *** 
+</I>&gt;<i> *** 
+</I>&gt;<i> *** 
+</I>&gt;<i> *******************************************************************/
+</I>&gt;<i> -dxClusterSpotItem::dxClusterSpotItem( QTreeWidget *parent, const  
+</I>&gt;<i> QString&amp; spot, const QColor&amp; color ) : QTreeWidgetItem( parent ){
+</I>&gt;<i> +dxClusterSpotItem::dxClusterSpotItem( QListWidget *parent, const  
+</I>&gt;<i> QString&amp; spot, const QColor&amp; color ) : QListWidgetItem( parent ){
+</I>&gt;<i> //cout &lt;&lt; &quot;KLog::dxClusterSpotItem - Constructor&quot; &lt;&lt; endl;
+</I>&gt;<i>   spotColor = color;
+</I>&gt;<i> -  setText(0, spot);
+</I>&gt;<i> +  setText(spot);
+</I>&gt;<i>   // Experimenting with fonts for the cluster
+</I>&gt;<i>   QFont f(&quot;Helvetica&quot;);
+</I>&gt;<i>   f.setFixedPitch(TRUE);
+</I>&gt;<i> -  setFont(0, f);
+</I>&gt;<i> +  setFont(f);
+</I>&gt;<i> }
+</I>&gt;<i>
+</I>&gt;<i> dxClusterSpotItem::~dxClusterSpotItem(){
+</I>&gt;<i>
+</I>&gt;<i> Modified: trunk/src/klog.h
+</I>&gt;<i> ===================================================================
+</I>&gt;<i> --- trunk/src/klog.h    2009-10-08 18:40:19 UTC (rev 54)
+</I>&gt;<i> +++ trunk/src/klog.h    2009-10-08 18:49:30 UTC (rev 55)
+</I>&gt;<i> @@ -34,6 +34,7 @@
+</I>&gt;<i> #include &lt;QList&gt;
+</I>&gt;<i> #include &lt;QPixmap&gt;
+</I>&gt;<i> #include &lt;QTextStream&gt;
+</I>&gt;<i> +#include &lt;QListWidget&gt;
+</I>&gt;<i> #include &lt;QTreeWidget&gt;
+</I>&gt;<i> #include &lt;QTreeWidgetItem&gt;
+</I>&gt;<i> #include &lt;QFile&gt;
+</I>&gt;<i> @@ -169,7 +170,7 @@
+</I>&gt;<i>     void slotQsoSelected (QTreeWidgetItem* item); // Just to see qso  
+</I>&gt;<i> data
+</I>&gt;<i>
+</I>&gt;<i> //TODO: DELETED FOR QT4 MIGRATION: Add the rightbutton
+</I>&gt;<i> -    void slotQsoRightButtonFromLog(QTreeWidgetItem * item, int);
+</I>&gt;<i> +//    void slotQsoRightButtonFromLog(Q3ListViewItem * item, const  
+</I>&gt;<i> QPoint &amp;p);
+</I>&gt;<i> //    void slotQsoRightButtonFromSearch(Q3ListViewItem * item, const  
+</I>&gt;<i> QPoint &amp;p);
+</I>&gt;<i>     void slotModifyBtn();
+</I>&gt;<i>     void showLogList();   // Shows the log in the botton widget
+</I>&gt;<i> @@ -205,18 +206,14 @@
+</I>&gt;<i>     void slotClusterSocketError( int e );
+</I>&gt;<i>     void slotClusterConnect();
+</I>&gt;<i>     void slotClusterClearInputLine();
+</I>&gt;<i> -    void slotClusterSpotToLog(QTreeWidgetItem* item, int);
+</I>&gt;<i> -    void slotClusterSpotCheck(QTreeWidgetItem* item);
+</I>&gt;<i> +    void slotClusterSpotToLog(QListWidgetItem* item, int);
+</I>&gt;<i> +    void slotClusterSpotCheck(QListWidgetItem* item);
+</I>&gt;<i> //    void slotClusterSetup();
+</I>&gt;<i> //    void slotKlogSetup();
+</I>&gt;<i>     void slotBugReport();
+</I>&gt;<i>     void slotModeChanged (int i);
+</I>&gt;<i>     void slotBandChanged ();
+</I>&gt;<i>     void fillDXCCList();    // Fill the KLog tab
+</I>&gt;<i> -  protected:
+</I>&gt;<i> -    virtual void mousePressEvent(QMouseEvent *event);
+</I>&gt;<i> -    virtual void mouseMoveEvent(QMouseEvent *event);
+</I>&gt;<i> -    virtual void mouseReleaseEvent(QMouseEvent *event);
+</I>&gt;<i>
+</I>&gt;<i>   private:
+</I>&gt;<i>
+</I>&gt;<i> @@ -442,13 +439,11 @@
+</I>&gt;<i>     QAction *recQSOAct;
+</I>&gt;<i>     QAction *senQSOAct;
+</I>&gt;<i>     QActionGroup *qsoActionsGroup;
+</I>&gt;<i> -
+</I>&gt;<i> -    QPoint lastPoint;
+</I>&gt;<i> };
+</I>&gt;<i>
+</I>&gt;<i> -class dxClusterSpotItem : public QTreeWidgetItem {
+</I>&gt;<i> +class dxClusterSpotItem : public QListWidgetItem {
+</I>&gt;<i> public:
+</I>&gt;<i> -dxClusterSpotItem( QTreeWidget* parent, const QString&amp; spot, const  
+</I>&gt;<i> QColor&amp; color );
+</I>&gt;<i> +dxClusterSpotItem( QListWidget* parent, const QString&amp; spot, const  
+</I>&gt;<i> QColor&amp; color );
+</I>&gt;<i> ~dxClusterSpotItem();
+</I>&gt;<i> virtual void paintCell( QPainter *p, const QPalette &amp;cg,
+</I>&gt;<i> int column, int width, int alignment );
+</I>&gt;<i>
+</I>&gt;<i> Modified: trunk/src/klog.ui
+</I>&gt;<i> ===================================================================
+</I>&gt;<i> --- trunk/src/klog.ui    2009-10-08 18:40:19 UTC (rev 54)
+</I>&gt;<i> +++ trunk/src/klog.ui    2009-10-08 18:49:30 UTC (rev 55)
+</I>&gt;<i> @@ -10,8 +10,8 @@
+</I>&gt;<i>    &lt;rect&gt;
+</I>&gt;<i>     &lt;x&gt;0&lt;/x&gt;
+</I>&gt;<i>     &lt;y&gt;0&lt;/y&gt;
+</I>&gt;<i> -    &lt;width&gt;968&lt;/width&gt;
+</I>&gt;<i> -    &lt;height&gt;720&lt;/height&gt;
+</I>&gt;<i> +    &lt;width&gt;966&lt;/width&gt;
+</I>&gt;<i> +    &lt;height&gt;718&lt;/height&gt;
+</I>&gt;<i>    &lt;/rect&gt;
+</I>&gt;<i>   &lt;/property&gt;
+</I>&gt;<i>   &lt;property name=&quot;sizePolicy&quot;&gt;
+</I>&gt;<i> @@ -49,7 +49,7 @@
+</I>&gt;<i>        &lt;/size&gt;
+</I>&gt;<i>       &lt;/property&gt;
+</I>&gt;<i>       &lt;property name=&quot;currentIndex&quot;&gt;
+</I>&gt;<i> -       &lt;number&gt;0&lt;/number&gt;
+</I>&gt;<i> +       &lt;number&gt;1&lt;/number&gt;
+</I>&gt;<i>       &lt;/property&gt;
+</I>&gt;<i>       &lt;widget class=&quot;QWidget&quot; name=&quot;logdisplayTab&quot;&gt;
+</I>&gt;<i>        &lt;attribute name=&quot;title&quot;&gt;
+</I>&gt;<i> @@ -120,15 +120,6 @@
+</I>&gt;<i>         &lt;string&gt;Cluster&lt;/string&gt;
+</I>&gt;<i>        &lt;/attribute&gt;
+</I>&gt;<i>        &lt;layout class=&quot;QGridLayout&quot; name=&quot;gridLayout_5&quot;&gt;
+</I>&gt;<i> -        &lt;item row=&quot;0&quot; column=&quot;0&quot; colspan=&quot;3&quot;&gt;
+</I>&gt;<i> -         &lt;widget class=&quot;QTreeWidget&quot; name=&quot;dxclusterTreeWidget&quot;&gt;
+</I>&gt;<i> -          &lt;column&gt;
+</I>&gt;<i> -           &lt;property name=&quot;text&quot;&gt;
+</I>&gt;<i> -            &lt;string&gt;KLog DX Cluster&lt;/string&gt;
+</I>&gt;<i> -           &lt;/property&gt;
+</I>&gt;<i> -          &lt;/column&gt;
+</I>&gt;<i> -         &lt;/widget&gt;
+</I>&gt;<i> -        &lt;/item&gt;
+</I>&gt;<i>         &lt;item row=&quot;1&quot; column=&quot;0&quot;&gt;
+</I>&gt;<i>          &lt;widget class=&quot;QLineEdit&quot; name=&quot;ClusterkLineEditInPut&quot;/&gt;
+</I>&gt;<i>         &lt;/item&gt;
+</I>&gt;<i> @@ -146,6 +137,9 @@
+</I>&gt;<i>           &lt;/property&gt;
+</I>&gt;<i>          &lt;/widget&gt;
+</I>&gt;<i>         &lt;/item&gt;
+</I>&gt;<i> +        &lt;item row=&quot;0&quot; column=&quot;0&quot;&gt;
+</I>&gt;<i> +         &lt;widget class=&quot;QListWidget&quot; name=&quot;dxclusterListWidget&quot;/&gt;
+</I>&gt;<i> +        &lt;/item&gt;
+</I>&gt;<i>        &lt;/layout&gt;
+</I>&gt;<i>       &lt;/widget&gt;
+</I>&gt;<i>       &lt;widget class=&quot;QWidget&quot; name=&quot;dxccTab&quot;&gt;
+</I>&gt;<i> @@ -1282,7 +1276,7 @@
+</I>&gt;<i>         &lt;/property&gt;
+</I>&gt;<i>         &lt;layout class=&quot;QGridLayout&quot; name=&quot;gridLayout&quot;&gt;
+</I>&gt;<i>          &lt;item row=&quot;0&quot; column=&quot;0&quot;&gt;
+</I>&gt;<i> -          &lt;widget class=&quot;KLed&quot; name=&quot;kledColor&quot;/&gt;
+</I>&gt;<i> +          &lt;widget class=&quot;KLed&quot; name=&quot;kledColor&quot; native=&quot;true&quot;/&gt;
+</I>&gt;<i>          &lt;/item&gt;
+</I>&gt;<i>          &lt;item row=&quot;0&quot; column=&quot;1&quot; colspan=&quot;2&quot;&gt;
+</I>&gt;<i>           &lt;widget class=&quot;QLineEdit&quot; name=&quot;qrzLineEdit&quot;&gt;
+</I>&gt;<i> @@ -2568,8 +2562,8 @@
+</I>&gt;<i>     &lt;rect&gt;
+</I>&gt;<i>      &lt;x&gt;0&lt;/x&gt;
+</I>&gt;<i>      &lt;y&gt;0&lt;/y&gt;
+</I>&gt;<i> -     &lt;width&gt;968&lt;/width&gt;
+</I>&gt;<i> -     &lt;height&gt;28&lt;/height&gt;
+</I>&gt;<i> +     &lt;width&gt;966&lt;/width&gt;
+</I>&gt;<i> +     &lt;height&gt;23&lt;/height&gt;
+</I>&gt;<i>     &lt;/rect&gt;
+</I>&gt;<i>    &lt;/property&gt;
+</I>&gt;<i>    &lt;property name=&quot;defaultUp&quot;&gt;
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Klog-svn mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/klog-devel">Klog-svn at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/klog-svn">https://lists.berlios.de/mailman/listinfo/klog-svn</A>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/klog-devel/attachments/20091008/280455f6/attachment.html">https://lists.berlios.de/pipermail/klog-devel/attachments/20091008/280455f6/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000016.html">[Klog-devel] Dxcluster options
+</A></li>
+	<LI>Next message: <A HREF="000018.html">[Klog-devel] Klog-devel Digest, Vol 2, Issue 6
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#17">[ date ]</a>
+              <a href="thread.html#17">[ thread ]</a>
+              <a href="subject.html#17">[ subject ]</a>
+              <a href="author.html#17">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/klog-devel">More information about the Klog-devel
+mailing list</a><br>
+</body></html>

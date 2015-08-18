@@ -1,0 +1,247 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Klog-devel] Klog-devel Digest, Vol 2, Issue 2
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/klog-devel/2009-October/index.html" >
+   <LINK REL="made" HREF="mailto:klog-devel%40lists.berlios.de?Subject=Re%3A%20%5BKlog-devel%5D%20Klog-devel%20Digest%2C%20Vol%202%2C%20Issue%202&In-Reply-To=%3C7290_1254769383_4ACA42B7_7290_18_1_200910060802.10591.andrew.goldie%40solnetsolutions.co.nz%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000012.html">
+   <LINK REL="Next"  HREF="000014.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Klog-devel] Klog-devel Digest, Vol 2, Issue 2</H1>
+    <B>Andrew Goldie</B> 
+    <A HREF="mailto:klog-devel%40lists.berlios.de?Subject=Re%3A%20%5BKlog-devel%5D%20Klog-devel%20Digest%2C%20Vol%202%2C%20Issue%202&In-Reply-To=%3C7290_1254769383_4ACA42B7_7290_18_1_200910060802.10591.andrew.goldie%40solnetsolutions.co.nz%3E"
+       TITLE="[Klog-devel] Klog-devel Digest, Vol 2, Issue 2">andrew.goldie at solnetsolutions.co.nz
+       </A><BR>
+    <I>Mon Oct  5 21:02:10 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000012.html">[Klog-devel] KLog new features
+</A></li>
+        <LI>Next message: <A HREF="000014.html">[Klog-devel] Comments on sqllite, dxcluster and some more...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#13">[ date ]</a>
+              <a href="thread.html#13">[ thread ]</a>
+              <a href="subject.html#13">[ subject ]</a>
+              <a href="author.html#13">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Mon, 05 Oct 2009 23:01:32 <A HREF="https://lists.berlios.de/mailman/listinfo/klog-devel">klog-devel-request at lists.berlios.de</A> wrote:
+&gt;<i> Send Klog-devel mailing list submissions to
+</I>&gt;<i> 	<A HREF="https://lists.berlios.de/mailman/listinfo/klog-devel">klog-devel at lists.berlios.de</A>
+</I>&gt;<i>
+</I>&gt;<i> To subscribe or unsubscribe via the World Wide Web, visit
+</I>&gt;<i> 	<A HREF="https://lists.berlios.de/mailman/listinfo/klog-devel">https://lists.berlios.de/mailman/listinfo/klog-devel</A>
+</I>&gt;<i> or, via email, send a message with subject or body 'help' to
+</I>&gt;<i> 	<A HREF="https://lists.berlios.de/mailman/listinfo/klog-devel">klog-devel-request at lists.berlios.de</A>
+</I>&gt;<i>
+</I>&gt;<i> You can reach the person managing the list at
+</I>&gt;<i> 	<A HREF="https://lists.berlios.de/mailman/listinfo/klog-devel">klog-devel-owner at lists.berlios.de</A>
+</I>&gt;<i>
+</I>&gt;<i> When replying, please edit your Subject line so it is more specific
+</I>&gt;<i> than &quot;Re: Contents of Klog-devel digest...&quot;
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Today's Topics:
+</I>&gt;<i>
+</I>&gt;<i>    1. Load and Save (Andrew Goldie)
+</I>&gt;<i>    2. Re: Load and Save (Jaime Robles)
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> ----------------------------------------------------------------------
+</I>&gt;<i>
+</I>&gt;<i> Message: 1
+</I>&gt;<i> Date: Mon, 5 Oct 2009 08:54:37 +1200
+</I>&gt;<i> From: Andrew Goldie &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/klog-devel">andrew.goldie at solnetsolutions.co.nz</A>&gt;
+</I>&gt;<i> Subject: [Klog-devel] Load and Save
+</I>&gt;<i> To: <A HREF="https://lists.berlios.de/mailman/listinfo/klog-devel">klog-devel at lists.berlios.de</A>
+</I>&gt;<i> Message-ID:
+</I>&gt;<i> 	&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/klog-devel">30180_1254689675_4AC90B89_30180_14_1_200910050954.37640.andrew.goldie at sol</A>
+</I>&gt;<i>netsolutions.co.nz&gt;
+</I>&gt;<i>
+</I>&gt;<i> Content-Type: text/plain;  charset=&quot;us-ascii&quot;
+</I>&gt;<i>
+</I>&gt;<i> Hi Jaime,
+</I>&gt;<i>
+</I>&gt;<i> Over the weekend I had some fun in the Oceania DX contest and heres what
+</I>&gt;<i> happened!
+</I>&gt;<i>
+</I>&gt;<i> Since I didn't have a contest logging program for Linux I used Klog 0.4.6 -
+</I>&gt;<i> the version I added the contest extra code to.
+</I>&gt;<i>
+</I>&gt;<i> This worked fine for a little while until I shut down Klog and tried to
+</I>&gt;<i> load the contest log I had just saved. This didn't work for some weird
+</I>&gt;<i> reason. So I thought &quot;easy I'll just edit the code and recompile&quot;.
+</I>&gt;<i> Unfortunately having upgraded to KUbuntu 9.04 which uses KDE4 the QT3
+</I>&gt;<i> libraries weren't there - no problem I just installed them . But I still
+</I>&gt;<i> couldn't get klog-0.4.6 to compile - something to do with looking for KDE
+</I>&gt;<i> libraries  - probably version 3.x ones.
+</I>&gt;<i>
+</I>&gt;<i> So to cut a long story short I quickly had to find another contest logging
+</I>&gt;<i> program for Linux. I then stumbled across one called QLE
+</I>&gt;<i> (<A HREF="http://home.kpn.nl/w.knol18/qle/qle.html">http://home.kpn.nl/w.knol18/qle/qle.html</A> - This was written by WIlbert
+</I>&gt;<i> Knol who used to belong to our local radio club before he shifted back to
+</I>&gt;<i> The Netherlands). After some fairly quick, although that easy,
+</I>&gt;<i> configuration I was up and running again.
+</I>&gt;<i>
+</I>&gt;<i> I mention this because QLE uses a SQLlite database back end to save it's
+</I>&gt;<i> data in. Would it be worth considering using a database to store the Klog
+</I>&gt;<i> data in as opposed to the QSO class? It would mean some rewriting of the
+</I>&gt;<i> code but it would take away the hassle of looking after what could become a
+</I>&gt;<i> big in memory QList of QSO's. It would also mean that all QSO's are
+</I>&gt;<i> automatically saved when they are created - this would making the saving
+</I>&gt;<i> and loading not needed.
+</I>&gt;<i>
+</I>&gt;<i> What do you think?
+</I>&gt;<i>
+</I>&gt;<i> Andrew
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Attention:
+</I>&gt;<i> This email may contain information intended for the sole use of
+</I>&gt;<i> the original recipient. Please respect this when sharing or
+</I>&gt;<i> disclosing this email's contents with any third party. If you
+</I>&gt;<i> believe you have received this email in error, please delete it
+</I>&gt;<i> and notify the sender or <A HREF="https://lists.berlios.de/mailman/listinfo/klog-devel">postmaster at solnetsolutions.co.nz</A> as
+</I>&gt;<i> soon as possible. The content of this email does not necessarily
+</I>&gt;<i> reflect the views of Solnet Solutions Ltd.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> ------------------------------
+</I>&gt;<i>
+</I>&gt;<i> Message: 2
+</I>&gt;<i> Date: Mon, 5 Oct 2009 10:02:34 +0200 (CEST)
+</I>&gt;<i> From: &quot;Jaime Robles&quot; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/klog-devel">jaime at robles.es</A>&gt;
+</I>&gt;<i> Subject: Re: [Klog-devel] Load and Save
+</I>&gt;<i> To: <A HREF="https://lists.berlios.de/mailman/listinfo/klog-devel">klog-devel at lists.berlios.de</A>
+</I>&gt;<i> Message-ID:
+</I>&gt;<i> 	&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/klog-devel">252d385b50375df7662d1387f0a7f593.squirrel at correo.robles.es</A>&gt;
+</I>&gt;<i> Content-Type: text/plain;charset=iso-8859-1
+</I>&gt;<i>
+</I>Hi Jaime,
+
+&gt;<i> Hello Andrew,
+</I>&gt;<i>
+</I>&gt;<i> &gt; Since I didn't have a contest logging program for Linux I used Klog 0.4.6
+</I>&gt;<i> &gt; the version I added the contest extra code to.
+</I>&gt;<i>
+</I>&gt;<i> I think we could think about the contesting features carefully... It may
+</I>&gt;<i> worth it as I don't know any contest software for linux that is updated
+</I>&gt;<i> and works ok.
+</I>&gt;<i> Do you know N1MM? A windows software with a lot of good features.
+</I>I have used a couple of other contesting software programs on windows and they 
+are very good but unfortunately (or fortunately) my main PC in a Linux one!
+
+&gt;<i>
+</I>&gt;<i> &gt; This worked fine for a little while until I shut down Klog and tried to
+</I>&gt;<i> &gt; load
+</I>&gt;<i> &gt; the contest log I had just saved. This didn't work for some weird reason.
+</I>&gt;<i>
+</I>&gt;<i> Strange... I am still using klog 0.4.6 for my &quot;stable&quot; hamradio operation.
+</I>Yes it was to do with my upgrading to KDE4 and having QT3 stuff unavailable. 
+My klog executable was compiled on my previous version of Kubuntu.
+
+&gt;<i>
+</I>&gt;<i> &gt; in. Would it be worth considering using a database to store the Klog data
+</I>&gt;<i> &gt; in as opposed to the QSO class? It would mean some rewriting of the code
+</I>&gt;<i>
+</I>&gt;<i> When I started KLog I considered using a DB to save the QSOs.
+</I>&gt;<i> The reason for discarding that option was to make KLog as much
+</I>&gt;<i> &quot;independant&quot; of other software as possible and avoid all the
+</I>&gt;<i> configurations problems for the users as possible.
+</I>Yes this is true but I was perhaps thinking of a DB linu sqllite ot Berkley DB 
+with is really just a set of libraries available on most Linux boxes. Or this 
+could be statically linked to the executable.
+
+I would have still imagined that the database stuff would not be configured or 
+seen by the users.
+&gt;<i>
+</I>&gt;<i> Moreover, another &quot;feature&quot; I am thinking for next releases of KLog (it is
+</I>&gt;<i> still in the thinking-phase) of adding MS Windows support to KLog. That
+</I>&gt;<i> way we could get many new users among the ham radio community.
+</I>&gt;<i> KLog would:
+</I>&gt;<i>  1.- be available to more users.
+</I>&gt;<i>  2.- be a way to show&amp;promote free software and KDE to MS Windows.
+</I>Yes this fairly easy with a straight QT project, I have done it a few times. 
+In fact all that has to be done to run is for it to be compiled on a windows 
+box and a small DLL included with the exe file.
+
+The problem with KLog is that it includes some KDE and possibly some hamlib 
+stuff that will not compile on windows.
+&gt;<i>
+</I>&gt;<i> &gt; would take away the hassle of looking after what could become a big in
+</I>&gt;<i> &gt; memory QList of QSO's.
+</I>&gt;<i>
+</I>&gt;<i> Today I am working flawlessly or at least without noticing load with a log
+</I>&gt;<i> with more than 10.000QSO.
+</I>&gt;<i> I have done testings with BIG logs (100K) and it works ok and I don't
+</I>&gt;<i> think people works with logs so bigs! X'DDD
+</I>&gt;<i>
+</I>&gt;<i> &gt;It would also mean that all QSO's are automatically saved
+</I>&gt;<i> &gt; when they are created - this would making the saving and loading not
+</I>&gt;<i> &gt; needed.
+</I>&gt;<i>
+</I>&gt;<i> Here you are right and I have to agree.
+</I>&gt;<i> However that is the reason of creating a temp file with the log diff. I
+</I>&gt;<i> suppose you have seen that now, KLogs creates a temp file with the QSOs
+</I>&gt;<i> added between saves so no QSOs are lost in case of an unexpected
+</I>&gt;<i> exit/crash.
+</I>&gt;<i>
+</I>&gt;<i> Maybe we should rework this way of autosaving if you think it is not
+</I>&gt;<i> working well.
+</I>&gt;<i>
+</I>I see that you are using a QTreeWdiget as the main display widget, can I ask 
+why you chose that over a QTableWidget which has a few more functions that 
+would make some stuff a little bit easier?
+&gt;<i>
+</I>&gt;<i> Anyway, did you noticed any problem with berlios.de connection this
+</I>&gt;<i> weekend? I tried to connect to update the SVN and I was not able to do it.
+</I>&gt;<i> I also tried to connect to developer.berlios.de without success...
+</I>Yes I did, I thought my account was broken!
+
+
+
+
+Attention:
+This email may contain information intended for the sole use of
+the original recipient. Please respect this when sharing or
+disclosing this email's contents with any third party. If you
+believe you have received this email in error, please delete it
+and notify the sender or <A HREF="https://lists.berlios.de/mailman/listinfo/klog-devel">postmaster at solnetsolutions.co.nz</A> as
+soon as possible. The content of this email does not necessarily
+reflect the views of Solnet Solutions Ltd.
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000012.html">[Klog-devel] KLog new features
+</A></li>
+	<LI>Next message: <A HREF="000014.html">[Klog-devel] Comments on sqllite, dxcluster and some more...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#13">[ date ]</a>
+              <a href="thread.html#13">[ thread ]</a>
+              <a href="subject.html#13">[ subject ]</a>
+              <a href="author.html#13">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/klog-devel">More information about the Klog-devel
+mailing list</a><br>
+</body></html>

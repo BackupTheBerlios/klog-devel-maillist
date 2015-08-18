@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Klog-devel] Load and Save
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/klog-devel/2009-October/index.html" >
+   <LINK REL="made" HREF="mailto:klog-devel%40lists.berlios.de?Subject=Re%3A%20%5BKlog-devel%5D%20Load%20and%20Save&In-Reply-To=%3C252d385b50375df7662d1387f0a7f593.squirrel%40correo.robles.es%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000007.html">
+   <LINK REL="Next"  HREF="000010.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Klog-devel] Load and Save</H1>
+    <B>Jaime Robles</B> 
+    <A HREF="mailto:klog-devel%40lists.berlios.de?Subject=Re%3A%20%5BKlog-devel%5D%20Load%20and%20Save&In-Reply-To=%3C252d385b50375df7662d1387f0a7f593.squirrel%40correo.robles.es%3E"
+       TITLE="[Klog-devel] Load and Save">jaime at robles.es
+       </A><BR>
+    <I>Mon Oct  5 10:02:34 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000007.html">[Klog-devel] Load and Save
+</A></li>
+        <LI>Next message: <A HREF="000010.html">[Klog-devel] KLog's tasks
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#8">[ date ]</a>
+              <a href="thread.html#8">[ thread ]</a>
+              <a href="subject.html#8">[ subject ]</a>
+              <a href="author.html#8">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello Andrew,
+
+&gt;<i> Since I didn't have a contest logging program for Linux I used Klog 0.4.6
+</I>&gt;<i> the version I added the contest extra code to.
+</I>I think we could think about the contesting features carefully... It may
+worth it as I don't know any contest software for linux that is updated
+and works ok.
+Do you know N1MM? A windows software with a lot of good features.
+
+&gt;<i> This worked fine for a little while until I shut down Klog and tried to
+</I>&gt;<i> load
+</I>&gt;<i> the contest log I had just saved. This didn't work for some weird reason.
+</I>Strange... I am still using klog 0.4.6 for my &quot;stable&quot; hamradio operation.
+
+&gt;<i> in. Would it be worth considering using a database to store the Klog data
+</I>&gt;<i> in as opposed to the QSO class? It would mean some rewriting of the code
+</I>When I started KLog I considered using a DB to save the QSOs.
+The reason for discarding that option was to make KLog as much
+&quot;independant&quot; of other software as possible and avoid all the
+configurations problems for the users as possible.
+
+Moreover, another &quot;feature&quot; I am thinking for next releases of KLog (it is
+still in the thinking-phase) of adding MS Windows support to KLog. That
+way we could get many new users among the ham radio community.
+KLog would:
+ 1.- be available to more users.
+ 2.- be a way to show&amp;promote free software and KDE to MS Windows.
+
+&gt;<i> would take away the hassle of looking after what could become a big in
+</I>&gt;<i> memory QList of QSO's.
+</I>Today I am working flawlessly or at least without noticing load with a log
+with more than 10.000QSO.
+I have done testings with BIG logs (100K) and it works ok and I don't
+think people works with logs so bigs! X'DDD
+
+
+
+&gt;<i>It would also mean that all QSO's are automatically saved
+</I>&gt;<i> when they are created - this would making the saving and loading not
+</I>&gt;<i> needed.
+</I>Here you are right and I have to agree.
+However that is the reason of creating a temp file with the log diff. I
+suppose you have seen that now, KLogs creates a temp file with the QSOs
+added between saves so no QSOs are lost in case of an unexpected
+exit/crash.
+
+Maybe we should rework this way of autosaving if you think it is not
+working well.
+
+
+Anyway, did you noticed any problem with berlios.de connection this
+weekend? I tried to connect to update the SVN and I was not able to do it.
+I also tried to connect to developer.berlios.de without success...
+
+-- 
+Un saludo,
+	Jaime Robles, EA4TV
+	<A HREF="https://lists.berlios.de/mailman/listinfo/klog-devel">jaime at robles.es</A>
+
+Visita:
+   <A HREF="http://jaime.robles.es">http://jaime.robles.es</A>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000007.html">[Klog-devel] Load and Save
+</A></li>
+	<LI>Next message: <A HREF="000010.html">[Klog-devel] KLog's tasks
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#8">[ date ]</a>
+              <a href="thread.html#8">[ thread ]</a>
+              <a href="subject.html#8">[ subject ]</a>
+              <a href="author.html#8">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/klog-devel">More information about the Klog-devel
+mailing list</a><br>
+</body></html>

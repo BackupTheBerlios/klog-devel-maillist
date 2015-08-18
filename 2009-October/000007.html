@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Klog-devel] Load and Save
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/klog-devel/2009-October/index.html" >
+   <LINK REL="made" HREF="mailto:klog-devel%40lists.berlios.de?Subject=Re%3A%20%5BKlog-devel%5D%20Load%20and%20Save&In-Reply-To=%3C30180_1254689675_4AC90B89_30180_14_1_200910050954.37640.andrew.goldie%40solnetsolutions.co.nz%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000006.html">
+   <LINK REL="Next"  HREF="000008.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Klog-devel] Load and Save</H1>
+    <B>Andrew Goldie</B> 
+    <A HREF="mailto:klog-devel%40lists.berlios.de?Subject=Re%3A%20%5BKlog-devel%5D%20Load%20and%20Save&In-Reply-To=%3C30180_1254689675_4AC90B89_30180_14_1_200910050954.37640.andrew.goldie%40solnetsolutions.co.nz%3E"
+       TITLE="[Klog-devel] Load and Save">andrew.goldie at solnetsolutions.co.nz
+       </A><BR>
+    <I>Sun Oct  4 22:54:37 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000006.html">[Klog-devel] Klog-devel Digest, Vol 1, Issue 134
+</A></li>
+        <LI>Next message: <A HREF="000008.html">[Klog-devel] Load and Save
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#7">[ date ]</a>
+              <a href="thread.html#7">[ thread ]</a>
+              <a href="subject.html#7">[ subject ]</a>
+              <a href="author.html#7">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Jaime,
+
+Over the weekend I had some fun in the Oceania DX contest and heres what 
+happened!
+
+Since I didn't have a contest logging program for Linux I used Klog 0.4.6 - 
+the version I added the contest extra code to. 
+
+This worked fine for a little while until I shut down Klog and tried to load 
+the contest log I had just saved. This didn't work for some weird reason. So I 
+thought &quot;easy I'll just edit the code and recompile&quot;. Unfortunately having 
+upgraded to KUbuntu 9.04 which uses KDE4 the QT3 libraries weren't there - no 
+problem I just installed them . But I still couldn't get klog-0.4.6 to compile 
+- something to do with looking for KDE libraries  - probably version 3.x ones. 
+
+So to cut a long story short I quickly had to find another contest logging 
+program for Linux. I then stumbled across one called QLE 
+(<A HREF="http://home.kpn.nl/w.knol18/qle/qle.html">http://home.kpn.nl/w.knol18/qle/qle.html</A> - This was written by WIlbert Knol 
+who used to belong to our local radio club before he shifted back to The 
+Netherlands). After some fairly quick, although that easy, configuration I was 
+up and running again.
+
+I mention this because QLE uses a SQLlite database back end to save it's data 
+in. Would it be worth considering using a database to store the Klog data in 
+as opposed to the QSO class? It would mean some rewriting of the code but it 
+would take away the hassle of looking after what could become a big in memory 
+QList of QSO's. It would also mean that all QSO's are automatically saved when 
+they are created - this would making the saving and loading not needed.
+
+What do you think?
+
+Andrew
+
+
+Attention:
+This email may contain information intended for the sole use of
+the original recipient. Please respect this when sharing or
+disclosing this email's contents with any third party. If you
+believe you have received this email in error, please delete it
+and notify the sender or <A HREF="https://lists.berlios.de/mailman/listinfo/klog-devel">postmaster at solnetsolutions.co.nz</A> as
+soon as possible. The content of this email does not necessarily
+reflect the views of Solnet Solutions Ltd.
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000006.html">[Klog-devel] Klog-devel Digest, Vol 1, Issue 134
+</A></li>
+	<LI>Next message: <A HREF="000008.html">[Klog-devel] Load and Save
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#7">[ date ]</a>
+              <a href="thread.html#7">[ thread ]</a>
+              <a href="subject.html#7">[ subject ]</a>
+              <a href="author.html#7">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/klog-devel">More information about the Klog-devel
+mailing list</a><br>
+</body></html>

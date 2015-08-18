@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Klog-devel] Fwd: klog crashes if no cty.dat
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/klog-devel/2010-March/index.html" >
+   <LINK REL="made" HREF="mailto:klog-devel%40lists.berlios.de?Subject=Re%3A%20%5BKlog-devel%5D%20Fwd%3A%20klog%20crashes%20if%20no%20cty.dat&In-Reply-To=%3CB844BD87-708E-49F0-8EA0-993DBB30D03D%40robles.es%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Klog-devel] Fwd: klog crashes if no cty.dat</H1>
+    <B>Jaime Robles</B> 
+    <A HREF="mailto:klog-devel%40lists.berlios.de?Subject=Re%3A%20%5BKlog-devel%5D%20Fwd%3A%20klog%20crashes%20if%20no%20cty.dat&In-Reply-To=%3CB844BD87-708E-49F0-8EA0-993DBB30D03D%40robles.es%3E"
+       TITLE="[Klog-devel] Fwd: klog crashes if no cty.dat">jaime at robles.es
+       </A><BR>
+    <I>Sun Mar  7 08:23:15 CET 2010</I>
+    <P><UL>
+        
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#26">[ date ]</a>
+              <a href="thread.html#26">[ thread ]</a>
+              <a href="subject.html#26">[ subject ]</a>
+              <a href="author.html#26">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello,
+
+This is a grave bug... I am working on it but any help will be  
+appreciated!
+
+Jaime
+
+Inicio del mensaje reenviado:
+
+&gt;<i> De: Kamal Mostafa &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/klog-devel">kamal at whence.com</A>&gt;
+</I>&gt;<i> Fecha: 6 de marzo de 2010 03:00:23 GMT+01:00
+</I>&gt;<i> Para: Jaime Robles &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/klog-devel">jaime at robles.es</A>&gt;
+</I>&gt;<i> Asunto: klog crashes if no cty.dat
+</I>&gt;<i>
+</I>
+&gt;<i> Hi Jaime-
+</I>&gt;<i>
+</I>&gt;<i> I tried klog 0.5.3-1 today -- good news and bad news...
+</I>&gt;<i>
+</I>&gt;<i> The good news is that the package builds just fine on Ubuntu Lucid.
+</I>&gt;<i>
+</I>&gt;<i> The bad news is that klog 0.5.3-1 *and* 0.5.1-1 crash with SIGSEGV, if
+</I>&gt;<i> the user does not supply the ~/.klog/cty.dat file.
+</I>&gt;<i>
+</I>&gt;<i> Specifically:  Each time I start klog, I get the &quot;Warning - Can't find
+</I>&gt;<i> cty.dat&quot; dialog, which suggests that its okay to &quot;continue without  
+</I>&gt;<i> that
+</I>&gt;<i> data&quot;.  So I press OK (my only choice anyway).  Then the main window
+</I>&gt;<i> pops up, and I type &quot;EA4TV&lt;Enter&gt;&quot; into the callsign field.  Klog
+</I>&gt;<i> crashes with SIGSEGV.  The KDE crash handler shows a non-useful stack
+</I>&gt;<i> trace (since no debug symbols).
+</I>&gt;<i>
+</I>&gt;<i> If I *do* install a proper ~/.klog/cty.dat, then klog seems to work  
+</I>&gt;<i> fine
+</I>&gt;<i> -- I can log contacts, and save the log.
+</I>&gt;<i>
+</I>&gt;<i> As a test, I also tried using just a zero-length cty.dat but that also
+</I>&gt;<i> crashed the same way.
+</I>&gt;<i>
+</I>&gt;<i> So... What do you think?  In my opinion, this is a pretty serious bug,
+</I>&gt;<i> especially since casual testers (who don't know anything about  
+</I>&gt;<i> cty.dat!)
+</I>&gt;<i> will very likely experience it.  Would you like me to wait for you to
+</I>&gt;<i> fix it before we try to push klog into Ubuntu Lucid?  Technically,  
+</I>&gt;<i> since
+</I>&gt;<i> the problem also happens in 0.5.1 this isn't a regression, but if you
+</I>&gt;<i> *did* fix it for 0.5.3, then we could call it a &quot;very important bug  
+</I>&gt;<i> fix&quot;
+</I>&gt;<i> which might help to get it approved for Lucid.
+</I>&gt;<i>
+</I>&gt;<i> Let me know what you'd like to do.
+</I>&gt;<i>
+</I>&gt;<i> -Kamal
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/klog-devel/attachments/20100307/76514b8a/attachment.html">https://lists.berlios.de/pipermail/klog-devel/attachments/20100307/76514b8a/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#26">[ date ]</a>
+              <a href="thread.html#26">[ thread ]</a>
+              <a href="subject.html#26">[ subject ]</a>
+              <a href="author.html#26">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/klog-devel">More information about the Klog-devel
+mailing list</a><br>
+</body></html>

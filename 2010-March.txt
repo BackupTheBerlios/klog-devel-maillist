@@ -1,0 +1,64 @@
+From jaime at robles.es  Sun Mar  7 08:23:15 2010
+From: jaime at robles.es (Jaime Robles)
+Date: Sun, 7 Mar 2010 08:23:15 +0100
+Subject: [Klog-devel] Fwd: klog crashes if no cty.dat
+References: <1267840823.3241.113.camel@fourier>
+Message-ID: <B844BD87-708E-49F0-8EA0-993DBB30D03D@robles.es>
+
+Hello,
+
+This is a grave bug... I am working on it but any help will be  
+appreciated!
+
+Jaime
+
+Inicio del mensaje reenviado:
+
+> De: Kamal Mostafa <kamal at whence.com>
+> Fecha: 6 de marzo de 2010 03:00:23 GMT+01:00
+> Para: Jaime Robles <jaime at robles.es>
+> Asunto: klog crashes if no cty.dat
+>
+
+> Hi Jaime-
+>
+> I tried klog 0.5.3-1 today -- good news and bad news...
+>
+> The good news is that the package builds just fine on Ubuntu Lucid.
+>
+> The bad news is that klog 0.5.3-1 *and* 0.5.1-1 crash with SIGSEGV, if
+> the user does not supply the ~/.klog/cty.dat file.
+>
+> Specifically:  Each time I start klog, I get the "Warning - Can't find
+> cty.dat" dialog, which suggests that its okay to "continue without  
+> that
+> data".  So I press OK (my only choice anyway).  Then the main window
+> pops up, and I type "EA4TV<Enter>" into the callsign field.  Klog
+> crashes with SIGSEGV.  The KDE crash handler shows a non-useful stack
+> trace (since no debug symbols).
+>
+> If I *do* install a proper ~/.klog/cty.dat, then klog seems to work  
+> fine
+> -- I can log contacts, and save the log.
+>
+> As a test, I also tried using just a zero-length cty.dat but that also
+> crashed the same way.
+>
+> So... What do you think?  In my opinion, this is a pretty serious bug,
+> especially since casual testers (who don't know anything about  
+> cty.dat!)
+> will very likely experience it.  Would you like me to wait for you to
+> fix it before we try to push klog into Ubuntu Lucid?  Technically,  
+> since
+> the problem also happens in 0.5.1 this isn't a regression, but if you
+> *did* fix it for 0.5.3, then we could call it a "very important bug  
+> fix"
+> which might help to get it approved for Lucid.
+>
+> Let me know what you'd like to do.
+>
+> -Kamal
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/klog-devel/attachments/20100307/76514b8a/attachment.html>
+

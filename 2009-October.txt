@@ -1,0 +1,1775 @@
+From jaime at robles.es  Thu Oct  1 06:29:30 2009
+From: jaime at robles.es (Jaime Robles)
+Date: Thu, 1 Oct 2009 06:29:30 +0200
+Subject: [Klog-devel] Klog-devel Digest, Vol 1, Issue 134
+In-Reply-To: <12243_1254339628_4AC3B42A_12243_24_1_200910010840.42034.andrew.goldie@solnetsolutions.co.nz>
+References: <mailman.57.1254304916.31629.klog-devel@lists.berlios.de>
+	<12243_1254339628_4AC3B42A_12243_24_1_200910010840.42034.andrew.goldie@solnetsolutions.co.nz>
+Message-ID: <3CE43054-69AF-4DCF-9517-059E9F583AAD@robles.es>
+
+Hello Andrew,
+
+Once we have completed this release, having all the functionality of  
+KLog 0.4.7 and the bugs we find, we should start thinking on new  
+features.
+
+One possibility for this saving would be backround saving.
+
+By the way, do you really think that saving is too slow and need some  
+work?
+
+Jaime
+
+El 30/09/2009, a las 21:40, Andrew Goldie <andrew.goldie at solnetsolutions.co.nz 
+ > escribi?:
+
+> Hi Jaime,
+>
+> Yes I thought that might be the case with the logfile writing, we  
+> can just
+> uncomment out the orginal code and take out the my changes. Maybe we  
+> could
+> look at one of the following for saving quicker :
+>
+> 1. Append the log with changes that have been made since the last  
+> save.
+> 2. Create a "save log" when a qso is added to that all that needs to  
+> be done
+> is just a quick file write without all the logic surrounding it.
+>
+> I'll keep thinking about it!
+>
+> Andrew
+>
+>
+> On Wed, 30 Sep 2009 23:01:56 klog-devel-request at lists.berlios.de  
+> wrote:
+>> Send Klog-devel mailing list submissions to
+>>    klog-devel at lists.berlios.de
+>>
+>> To subscribe or unsubscribe via the World Wide Web, visit
+>>    https://lists.berlios.de/mailman/listinfo/klog-devel
+>> or, via email, send a message with subject or body 'help' to
+>>    klog-devel-request at lists.berlios.de
+>>
+>> You can reach the person managing the list at
+>>    klog-devel-owner at lists.berlios.de
+>>
+>> When replying, please edit your Subject line so it is more specific
+>> than "Re: Contents of Klog-devel digest..."
+>>
+>>
+>> Today's Topics:
+>>
+>>   1. [Fwd: [Klog-svn] r35 - trunk/src] (Jaime Robles)
+>>
+>>
+>> --- 
+>> -------------------------------------------------------------------
+>>
+>> Message: 1
+>> Date: Wed, 30 Sep 2009 10:58:07 +0200 (CEST)
+>> From: "Jaime Robles" <jaime at robles.es>
+>> Subject: [Klog-devel] [Fwd: [Klog-svn] r35 - trunk/src]
+>> To: klog-devel at lists.berlios.de
+>> Message-ID:
+>>    <057fd6b3fb30fae66734a726470a86f0.squirrel at correo.robles.es>
+>> Content-Type: text/plain;charset=iso-8859-1
+>>
+>>
+>> Good morning (here).
+>>
+>> Just a quick comment regarding the logs...
+>>
+>> I still have not tested this R35 update but I don't agree to remove  
+>> the
+>> "if" statements as it will (as you already said) increase the  
+>> logfile with
+>> no useful information.
+>>
+>> Reading the logfile will be a longer process as it will have to  
+>> read ALL
+>> the tags.
+>> ADIF files are sometime edited by the user with a text editor... we  
+>> should
+>> keep them easy to read/understand.
+>>
+>> The specification[1] does not forbid what you are proposing but I  
+>> think it
+>> would not be a best practice.
+>> If you think that we should improve the writting speed... IMHO we  
+>> should
+>> think how to optimize the function but keeping the log short and  
+>> concise,
+>> with all the needed data but simple and "good looking" :-)
+>>
+>> Regarding the TODO... maybe we should manage this in the TODO file,  
+>> or
+>> maybe using a bug tracker... I think Berlios offers one.
+>>
+>>
+>> [1] http://www.adif.org/adif223.htm
+>
+>
+>
+> Attention:
+> This email may contain information intended for the sole use of
+> the original recipient. Please respect this when sharing or
+> disclosing this email's contents with any third party. If you
+> believe you have received this email in error, please delete it
+> and notify the sender or postmaster at solnetsolutions.co.nz as
+> soon as possible. The content of this email does not necessarily
+> reflect the views of Solnet Solutions Ltd.
+>
+> _______________________________________________
+> Klog-devel mailing list
+> Klog-devel at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/klog-devel
+
+
+From andrew.goldie at solnetsolutions.co.nz  Sun Oct  4 22:54:37 2009
+From: andrew.goldie at solnetsolutions.co.nz (Andrew Goldie)
+Date: Mon, 5 Oct 2009 08:54:37 +1200
+Subject: [Klog-devel] Load and Save
+Message-ID: <30180_1254689675_4AC90B89_30180_14_1_200910050954.37640.andrew.goldie@solnetsolutions.co.nz>
+
+Hi Jaime,
+
+Over the weekend I had some fun in the Oceania DX contest and heres what 
+happened!
+
+Since I didn't have a contest logging program for Linux I used Klog 0.4.6 - 
+the version I added the contest extra code to. 
+
+This worked fine for a little while until I shut down Klog and tried to load 
+the contest log I had just saved. This didn't work for some weird reason. So I 
+thought "easy I'll just edit the code and recompile". Unfortunately having 
+upgraded to KUbuntu 9.04 which uses KDE4 the QT3 libraries weren't there - no 
+problem I just installed them . But I still couldn't get klog-0.4.6 to compile 
+- something to do with looking for KDE libraries  - probably version 3.x ones. 
+
+So to cut a long story short I quickly had to find another contest logging 
+program for Linux. I then stumbled across one called QLE 
+(http://home.kpn.nl/w.knol18/qle/qle.html - This was written by WIlbert Knol 
+who used to belong to our local radio club before he shifted back to The 
+Netherlands). After some fairly quick, although that easy, configuration I was 
+up and running again.
+
+I mention this because QLE uses a SQLlite database back end to save it's data 
+in. Would it be worth considering using a database to store the Klog data in 
+as opposed to the QSO class? It would mean some rewriting of the code but it 
+would take away the hassle of looking after what could become a big in memory 
+QList of QSO's. It would also mean that all QSO's are automatically saved when 
+they are created - this would making the saving and loading not needed.
+
+What do you think?
+
+Andrew
+
+
+Attention:
+This email may contain information intended for the sole use of
+the original recipient. Please respect this when sharing or
+disclosing this email's contents with any third party. If you
+believe you have received this email in error, please delete it
+and notify the sender or postmaster at solnetsolutions.co.nz as
+soon as possible. The content of this email does not necessarily
+reflect the views of Solnet Solutions Ltd.
+
+
+
+From jaime at robles.es  Mon Oct  5 10:02:34 2009
+From: jaime at robles.es (Jaime Robles)
+Date: Mon, 5 Oct 2009 10:02:34 +0200 (CEST)
+Subject: [Klog-devel] Load and Save
+In-Reply-To: <30180_1254689675_4AC90B89_30180_14_1_200910050954.37640.andrew.goldie
+	@solnetsolutions.co.nz>
+References: <30180_1254689675_4AC90B89_30180_14_1_200910050954.37640.andrew.goldie@solnetsolutions.co.nz>
+Message-ID: <252d385b50375df7662d1387f0a7f593.squirrel@correo.robles.es>
+
+Hello Andrew,
+
+> Since I didn't have a contest logging program for Linux I used Klog 0.4.6
+> the version I added the contest extra code to.
+I think we could think about the contesting features carefully... It may
+worth it as I don't know any contest software for linux that is updated
+and works ok.
+Do you know N1MM? A windows software with a lot of good features.
+
+> This worked fine for a little while until I shut down Klog and tried to
+> load
+> the contest log I had just saved. This didn't work for some weird reason.
+Strange... I am still using klog 0.4.6 for my "stable" hamradio operation.
+
+> in. Would it be worth considering using a database to store the Klog data
+> in as opposed to the QSO class? It would mean some rewriting of the code
+When I started KLog I considered using a DB to save the QSOs.
+The reason for discarding that option was to make KLog as much
+"independant" of other software as possible and avoid all the
+configurations problems for the users as possible.
+
+Moreover, another "feature" I am thinking for next releases of KLog (it is
+still in the thinking-phase) of adding MS Windows support to KLog. That
+way we could get many new users among the ham radio community.
+KLog would:
+ 1.- be available to more users.
+ 2.- be a way to show&promote free software and KDE to MS Windows.
+
+> would take away the hassle of looking after what could become a big in
+> memory QList of QSO's.
+Today I am working flawlessly or at least without noticing load with a log
+with more than 10.000QSO.
+I have done testings with BIG logs (100K) and it works ok and I don't
+think people works with logs so bigs! X'DDD
+
+
+
+>It would also mean that all QSO's are automatically saved
+> when they are created - this would making the saving and loading not
+> needed.
+Here you are right and I have to agree.
+However that is the reason of creating a temp file with the log diff. I
+suppose you have seen that now, KLogs creates a temp file with the QSOs
+added between saves so no QSOs are lost in case of an unexpected
+exit/crash.
+
+Maybe we should rework this way of autosaving if you think it is not
+working well.
+
+
+Anyway, did you noticed any problem with berlios.de connection this
+weekend? I tried to connect to update the SVN and I was not able to do it.
+I also tried to connect to developer.berlios.de without success...
+
+-- 
+Un saludo,
+	Jaime Robles, EA4TV
+	jaime at robles.es
+
+Visita:
+   http://jaime.robles.es
+
+
+
+From jaime at robles.es  Mon Oct  5 19:30:56 2009
+From: jaime at robles.es (Jaime Robles)
+Date: Mon, 5 Oct 2009 19:30:56 +0200 (CEST)
+Subject: [Klog-devel] KLog's tasks
+Message-ID: <68b9e9578ab636b4e88e46bdd315ae53.squirrel@correo.robles.es>
+
+Good afternoon here,
+
+I have added some tasks to the task manager. It is just test if that
+feature of Berlios is useful for us or not.
+
+-- 
+Un saludo,
+	Jaime Robles, EA4TV
+	jaime at robles.es
+
+Visita:
+   http://jaime.robles.es
+
+
+
+From jaime at robles.es  Mon Oct  5 19:30:55 2009
+From: jaime at robles.es (Jaime Robles)
+Date: Mon, 5 Oct 2009 19:30:55 +0200 (CEST)
+Subject: [Klog-devel] KLog's tasks
+Message-ID: <611e22b99496da18a4bf0f05b0a752b9.squirrel@correo.robles.es>
+
+Good afternoon here,
+
+I have added some tasks to the task manager. It is just test if that
+feature of Berlios is useful for us or not.
+
+-- 
+Un saludo,
+	Jaime Robles, EA4TV
+	jaime at robles.es
+
+Visita:
+   http://jaime.robles.es
+
+
+
+From jaime at robles.es  Mon Oct  5 20:30:05 2009
+From: jaime at robles.es (Jaime Robles)
+Date: Mon, 5 Oct 2009 20:30:05 +0200 (CEST)
+Subject: [Klog-devel] Crashes when slotQsoSearchSelectedForEdit twice or
+	others
+Message-ID: <604400ed1be27078302ba3795134ad34.squirrel@correo.robles.es>
+
+
+Hello,
+
+Current KLog crashes when clicking for the second time on the search box
+on the same or different QSO.
+
+I have detected that KLog also crashes if you have a QSO on the editing
+box that comes from the log double clicking and you double click on a QSO
+in the search box.
+
+The crash does not take place if you click on the log box... strange.
+
+I will continue looking for that bug but I am telling you here in case you
+have time for that. :-)
+
+-- 
+Un saludo,
+	Jaime Robles, EA4TV
+	jaime at robles.es
+
+Visita:
+   http://jaime.robles.es
+
+
+
+From jaime at robles.es  Mon Oct  5 20:33:22 2009
+From: jaime at robles.es (Jaime Robles)
+Date: Mon, 5 Oct 2009 20:33:22 +0200 (CEST)
+Subject: [Klog-devel] KLog new features
+Message-ID: <daccb986ce00321de681f15f57de734e.squirrel@correo.robles.es>
+
+
+I have added several future features proposals to test that functionality
+of Berlios.
+
+Mi intention is NOT adding any new feature until we have a 0.5.0 release
+released.
+0.5.0 should be more or less the same as 0.4.7 but on Qt4.
+
+Then we could add some features to the 0.5.1 and so on. We will be able to
+plan releases.
+
+I added a task to the 0.5.1 for testing (cabrillo import).
+In my opinion, adding a working hamlib support should also be included in
+a next release as users are always requesting that feature.
+
+
+-- 
+Un saludo,
+	Jaime Robles, EA4TV
+	jaime at robles.es
+
+Visita:
+   http://jaime.robles.es
+
+
+
+From andrew.goldie at solnetsolutions.co.nz  Mon Oct  5 21:02:10 2009
+From: andrew.goldie at solnetsolutions.co.nz (Andrew Goldie)
+Date: Tue, 6 Oct 2009 08:02:10 +1300
+Subject: [Klog-devel] Klog-devel Digest, Vol 2, Issue 2
+In-Reply-To: <mailman.43.1254736892.9319.klog-devel@lists.berlios.de>
+References: <mailman.43.1254736892.9319.klog-devel@lists.berlios.de>
+Message-ID: <7290_1254769383_4ACA42B7_7290_18_1_200910060802.10591.andrew.goldie@solnetsolutions.co.nz>
+
+On Mon, 05 Oct 2009 23:01:32 klog-devel-request at lists.berlios.de wrote:
+> Send Klog-devel mailing list submissions to
+> 	klog-devel at lists.berlios.de
+>
+> To subscribe or unsubscribe via the World Wide Web, visit
+> 	https://lists.berlios.de/mailman/listinfo/klog-devel
+> or, via email, send a message with subject or body 'help' to
+> 	klog-devel-request at lists.berlios.de
+>
+> You can reach the person managing the list at
+> 	klog-devel-owner at lists.berlios.de
+>
+> When replying, please edit your Subject line so it is more specific
+> than "Re: Contents of Klog-devel digest..."
+>
+>
+> Today's Topics:
+>
+>    1. Load and Save (Andrew Goldie)
+>    2. Re: Load and Save (Jaime Robles)
+>
+>
+> ----------------------------------------------------------------------
+>
+> Message: 1
+> Date: Mon, 5 Oct 2009 08:54:37 +1200
+> From: Andrew Goldie <andrew.goldie at solnetsolutions.co.nz>
+> Subject: [Klog-devel] Load and Save
+> To: klog-devel at lists.berlios.de
+> Message-ID:
+> 	<30180_1254689675_4AC90B89_30180_14_1_200910050954.37640.andrew.goldie at sol
+>netsolutions.co.nz>
+>
+> Content-Type: text/plain;  charset="us-ascii"
+>
+> Hi Jaime,
+>
+> Over the weekend I had some fun in the Oceania DX contest and heres what
+> happened!
+>
+> Since I didn't have a contest logging program for Linux I used Klog 0.4.6 -
+> the version I added the contest extra code to.
+>
+> This worked fine for a little while until I shut down Klog and tried to
+> load the contest log I had just saved. This didn't work for some weird
+> reason. So I thought "easy I'll just edit the code and recompile".
+> Unfortunately having upgraded to KUbuntu 9.04 which uses KDE4 the QT3
+> libraries weren't there - no problem I just installed them . But I still
+> couldn't get klog-0.4.6 to compile - something to do with looking for KDE
+> libraries  - probably version 3.x ones.
+>
+> So to cut a long story short I quickly had to find another contest logging
+> program for Linux. I then stumbled across one called QLE
+> (http://home.kpn.nl/w.knol18/qle/qle.html - This was written by WIlbert
+> Knol who used to belong to our local radio club before he shifted back to
+> The Netherlands). After some fairly quick, although that easy,
+> configuration I was up and running again.
+>
+> I mention this because QLE uses a SQLlite database back end to save it's
+> data in. Would it be worth considering using a database to store the Klog
+> data in as opposed to the QSO class? It would mean some rewriting of the
+> code but it would take away the hassle of looking after what could become a
+> big in memory QList of QSO's. It would also mean that all QSO's are
+> automatically saved when they are created - this would making the saving
+> and loading not needed.
+>
+> What do you think?
+>
+> Andrew
+>
+>
+> Attention:
+> This email may contain information intended for the sole use of
+> the original recipient. Please respect this when sharing or
+> disclosing this email's contents with any third party. If you
+> believe you have received this email in error, please delete it
+> and notify the sender or postmaster at solnetsolutions.co.nz as
+> soon as possible. The content of this email does not necessarily
+> reflect the views of Solnet Solutions Ltd.
+>
+>
+>
+> ------------------------------
+>
+> Message: 2
+> Date: Mon, 5 Oct 2009 10:02:34 +0200 (CEST)
+> From: "Jaime Robles" <jaime at robles.es>
+> Subject: Re: [Klog-devel] Load and Save
+> To: klog-devel at lists.berlios.de
+> Message-ID:
+> 	<252d385b50375df7662d1387f0a7f593.squirrel at correo.robles.es>
+> Content-Type: text/plain;charset=iso-8859-1
+>
+Hi Jaime,
+
+> Hello Andrew,
+>
+> > Since I didn't have a contest logging program for Linux I used Klog 0.4.6
+> > the version I added the contest extra code to.
+>
+> I think we could think about the contesting features carefully... It may
+> worth it as I don't know any contest software for linux that is updated
+> and works ok.
+> Do you know N1MM? A windows software with a lot of good features.
+I have used a couple of other contesting software programs on windows and they 
+are very good but unfortunately (or fortunately) my main PC in a Linux one!
+
+>
+> > This worked fine for a little while until I shut down Klog and tried to
+> > load
+> > the contest log I had just saved. This didn't work for some weird reason.
+>
+> Strange... I am still using klog 0.4.6 for my "stable" hamradio operation.
+Yes it was to do with my upgrading to KDE4 and having QT3 stuff unavailable. 
+My klog executable was compiled on my previous version of Kubuntu.
+
+>
+> > in. Would it be worth considering using a database to store the Klog data
+> > in as opposed to the QSO class? It would mean some rewriting of the code
+>
+> When I started KLog I considered using a DB to save the QSOs.
+> The reason for discarding that option was to make KLog as much
+> "independant" of other software as possible and avoid all the
+> configurations problems for the users as possible.
+Yes this is true but I was perhaps thinking of a DB linu sqllite ot Berkley DB 
+with is really just a set of libraries available on most Linux boxes. Or this 
+could be statically linked to the executable.
+
+I would have still imagined that the database stuff would not be configured or 
+seen by the users.
+>
+> Moreover, another "feature" I am thinking for next releases of KLog (it is
+> still in the thinking-phase) of adding MS Windows support to KLog. That
+> way we could get many new users among the ham radio community.
+> KLog would:
+>  1.- be available to more users.
+>  2.- be a way to show&promote free software and KDE to MS Windows.
+Yes this fairly easy with a straight QT project, I have done it a few times. 
+In fact all that has to be done to run is for it to be compiled on a windows 
+box and a small DLL included with the exe file.
+
+The problem with KLog is that it includes some KDE and possibly some hamlib 
+stuff that will not compile on windows.
+>
+> > would take away the hassle of looking after what could become a big in
+> > memory QList of QSO's.
+>
+> Today I am working flawlessly or at least without noticing load with a log
+> with more than 10.000QSO.
+> I have done testings with BIG logs (100K) and it works ok and I don't
+> think people works with logs so bigs! X'DDD
+>
+> >It would also mean that all QSO's are automatically saved
+> > when they are created - this would making the saving and loading not
+> > needed.
+>
+> Here you are right and I have to agree.
+> However that is the reason of creating a temp file with the log diff. I
+> suppose you have seen that now, KLogs creates a temp file with the QSOs
+> added between saves so no QSOs are lost in case of an unexpected
+> exit/crash.
+>
+> Maybe we should rework this way of autosaving if you think it is not
+> working well.
+>
+I see that you are using a QTreeWdiget as the main display widget, can I ask 
+why you chose that over a QTableWidget which has a few more functions that 
+would make some stuff a little bit easier?
+>
+> Anyway, did you noticed any problem with berlios.de connection this
+> weekend? I tried to connect to update the SVN and I was not able to do it.
+> I also tried to connect to developer.berlios.de without success...
+Yes I did, I thought my account was broken!
+
+
+
+
+Attention:
+This email may contain information intended for the sole use of
+the original recipient. Please respect this when sharing or
+disclosing this email's contents with any third party. If you
+believe you have received this email in error, please delete it
+and notify the sender or postmaster at solnetsolutions.co.nz as
+soon as possible. The content of this email does not necessarily
+reflect the views of Solnet Solutions Ltd.
+
+
+
+From jaime at robles.es  Tue Oct  6 20:18:31 2009
+From: jaime at robles.es (Jaime Robles)
+Date: Tue, 6 Oct 2009 20:18:31 +0200 (CEST)
+Subject: [Klog-devel] Comments on sqllite, dxcluster and some more...
+In-Reply-To: <7290_1254769383_4ACA42B7_7290_18_1_200910060802.10591.andrew.goldie@s
+	olnetsolutions.co.nz>
+References: <mailman.43.1254736892.9319.klog-devel@lists.berlios.de>
+	<7290_1254769383_4ACA42B7_7290_18_1_200910060802.10591.andrew.goldie@solnetsolutions.co.nz>
+Message-ID: <b16d53d439f393a81aa35ebb1c08a256.squirrel@correo.robles.es>
+
+
+>> When I started KLog I considered using a DB to save the QSOs.
+>> The reason for discarding that option was to make KLog as much
+>> "independant" of other software as possible and avoid all the
+>> configurations problems for the users as possible.
+> Yes this is true but I was perhaps thinking of a DB linu sqllite ot
+> Berkley DB
+> with is really just a set of libraries available on most Linux boxes. Or
+> this could be statically linked to the executable.
+Ok.
+I did not know sqllite nor Berkley DB... I was that you were proposing
+something like mysql or postgresql... ;-)
+Let me read a bit about that and check for implications that this may
+have. Today KLog works ok without sqllite... and I wouldn't like to limit
+the portability to MS-Windows :-| as I told you I am planning to reach
+Windows users too in a near future.
+
+I have done a very quick check for sqllite and it seems that it is also
+supported in windows systems so that would not be a great problem.
+Anyway, this would be a big change. Maybe we can add it to the future
+feature list and plan it in a future release... at least as a test. :-)
+
+
+>>  2.- be a way to show&promote free software and KDE to MS Windows.
+> Yes this fairly easy with a straight QT project, I have done it a few
+> times.
+> In fact all that has to be done to run is for it to be compiled on a
+> windows box and a small DLL included with the exe file.
+Great.
+I have no experience on that.
+
+> The problem with KLog is that it includes some KDE and possibly some
+> hamlib stuff that will not compile on windows.
+You are right again.
+I did some reading some months ago... and it seems that for a Windows
+port, we should use some compiler directives or something like that to
+avoid trying to add hamlib support in the windows compilation.
+
+I still don't know how to add hamlib-like features to a windows code...
+but today I don't care. Maybe we can add a windows coder to do that part
+when KLog is available for win systems ;-)
+
+
+
+> I see that you are using a QTreeWdiget as the main display widget, can I
+> ask
+> why you chose that over a QTableWidget which has a few more functions that
+> would make some stuff a little bit easier?
+I have no idea O:-)
+I was reading and checking the classes docs and I saw the QTreeWidget
+class... it was the most similar class to the QListView class that I was
+using in Qt3 so I directly migrated to QTreeWidget.
+I think that QTreeWidget may be very fast if we create and work with QList
+class and then we call the QTreeWidget just for showing the data but it is
+again another optimization.
+
+Maybe using a QTableWidget is also a good idea as we could (I am just
+guessing) allow the users to (quickly)edit the data directly through the
+QTableWidget...
+Again: we should add this to the TODO list and plan it to future releases.
+
+Today I had no time for coding.. :-(
+How do you think can we solve the fact that data comming from the
+dxcluster is hidden as soon as new data arrives from the network?
+It is not very confortable and it is a downgrade from previous (qt3) klog
+release :-\
+
+I am thinking of finding the way to insert instead of add the DXSpots and
+then setting the "focus" to the first element on the list, the top-one but
+I still haven't found how to do it.
+
+Do you have any other idea?
+
+-- 
+Un saludo,
+	Jaime Robles, EA4TV
+	jaime at robles.es
+
+Visita:
+   http://jaime.robles.es
+
+
+
+From andrew.goldie at solnetsolutions.co.nz  Wed Oct  7 21:15:38 2009
+From: andrew.goldie at solnetsolutions.co.nz (Andrew Goldie)
+Date: Thu, 8 Oct 2009 08:15:38 +1300
+Subject: [Klog-devel] Dxcluster options
+In-Reply-To: <mailman.65.1254909701.17820.klog-devel@lists.berlios.de>
+References: <mailman.65.1254909701.17820.klog-devel@lists.berlios.de>
+Message-ID: <31888_1254942934_4ACCE8D6_31888_90_1_200910080815.38568.andrew.goldie@solnetsolutions.co.nz>
+
+Hi Jaime,
+
+Yes I was thinking about the cluster options. I think probably one of the 
+easist is to use a QListWidget. This has an insertItem() funtion:
+
+void insertItem ( int row, QListWidgetItem * item )
+void insertItem ( int row, const QString & label )
+void insertItems ( int row, const QStringList & labels )
+
+With this we can always insert data at the top of the list by using:
+
+QListWidgetItem *DXItem = new QListWidgetItem;
+DXItem->setText(dxData);
+dxclusterListWidget->insertItem(0,  DXItem);
+
+The 0 being the top of the listwidget. I have done this before and it works 
+well. 
+
+I have also noticed that there is an error in here somewhere that crashes the 
+program. It is a very weird one and it only appears sometimes. Its got 
+something to do with QString I think the messages are similar to this:
+
+ASSERT: "i >= 0 && i < size()" in file /usr/include/qt4/QtCore/qstring.h
+
+I not sure why this error happens but I have done a little bit of 
+investigation and I think it has something to do identfying where the 
+callsigns come from, possibly the world class.
+
+Should we change the QTreeWidget to a QListWidget and use the insertItem(row, 
+item) function?
+
+Andrew
+
+
+On Wed, 07 Oct 2009 23:01:41 klog-devel-request at lists.berlios.de wrote:
+> Send Klog-devel mailing list submissions to
+> 	klog-devel at lists.berlios.de
+>
+> To subscribe or unsubscribe via the World Wide Web, visit
+> 	https://lists.berlios.de/mailman/listinfo/klog-devel
+> or, via email, send a message with subject or body 'help' to
+> 	klog-devel-request at lists.berlios.de
+>
+> You can reach the person managing the list at
+> 	klog-devel-owner at lists.berlios.de
+>
+> When replying, please edit your Subject line so it is more specific
+> than "Re: Contents of Klog-devel digest..."
+>
+>
+> Today's Topics:
+>
+>    1. Comments on sqllite, dxcluster and some more... (Jaime Robles)
+>
+>
+> ----------------------------------------------------------------------
+>
+> Message: 1
+> Date: Tue, 6 Oct 2009 20:18:31 +0200 (CEST)
+> From: "Jaime Robles" <jaime at robles.es>
+> Subject: [Klog-devel] Comments on sqllite, dxcluster and some more...
+> To: klog-devel at lists.berlios.de
+> Message-ID:
+> 	<b16d53d439f393a81aa35ebb1c08a256.squirrel at correo.robles.es>
+> Content-Type: text/plain;charset=iso-8859-1
+>
+> >> When I started KLog I considered using a DB to save the QSOs.
+> >> The reason for discarding that option was to make KLog as much
+> >> "independant" of other software as possible and avoid all the
+> >> configurations problems for the users as possible.
+> >
+> > Yes this is true but I was perhaps thinking of a DB linu sqllite ot
+> > Berkley DB
+> > with is really just a set of libraries available on most Linux boxes. Or
+> > this could be statically linked to the executable.
+>
+> Ok.
+> I did not know sqllite nor Berkley DB... I was that you were proposing
+> something like mysql or postgresql... ;-)
+> Let me read a bit about that and check for implications that this may
+> have. Today KLog works ok without sqllite... and I wouldn't like to limit
+> the portability to MS-Windows :-| as I told you I am planning to reach
+> Windows users too in a near future.
+>
+> I have done a very quick check for sqllite and it seems that it is also
+> supported in windows systems so that would not be a great problem.
+> Anyway, this would be a big change. Maybe we can add it to the future
+> feature list and plan it in a future release... at least as a test. :-)
+>
+> >>  2.- be a way to show&promote free software and KDE to MS Windows.
+> >
+> > Yes this fairly easy with a straight QT project, I have done it a few
+> > times.
+> > In fact all that has to be done to run is for it to be compiled on a
+> > windows box and a small DLL included with the exe file.
+>
+> Great.
+> I have no experience on that.
+>
+> > The problem with KLog is that it includes some KDE and possibly some
+> > hamlib stuff that will not compile on windows.
+>
+> You are right again.
+> I did some reading some months ago... and it seems that for a Windows
+> port, we should use some compiler directives or something like that to
+> avoid trying to add hamlib support in the windows compilation.
+>
+> I still don't know how to add hamlib-like features to a windows code...
+> but today I don't care. Maybe we can add a windows coder to do that part
+> when KLog is available for win systems ;-)
+>
+> > I see that you are using a QTreeWdiget as the main display widget, can I
+> > ask
+> > why you chose that over a QTableWidget which has a few more functions
+> > that would make some stuff a little bit easier?
+>
+> I have no idea O:-)
+> I was reading and checking the classes docs and I saw the QTreeWidget
+> class... it was the most similar class to the QListView class that I was
+> using in Qt3 so I directly migrated to QTreeWidget.
+> I think that QTreeWidget may be very fast if we create and work with QList
+> class and then we call the QTreeWidget just for showing the data but it is
+> again another optimization.
+>
+> Maybe using a QTableWidget is also a good idea as we could (I am just
+> guessing) allow the users to (quickly)edit the data directly through the
+> QTableWidget...
+> Again: we should add this to the TODO list and plan it to future releases.
+>
+> Today I had no time for coding.. :-(
+> How do you think can we solve the fact that data comming from the
+> dxcluster is hidden as soon as new data arrives from the network?
+> It is not very confortable and it is a downgrade from previous (qt3) klog
+> release :-\
+>
+> I am thinking of finding the way to insert instead of add the DXSpots and
+> then setting the "focus" to the first element on the list, the top-one but
+> I still haven't found how to do it.
+>
+> Do you have any other idea?
+
+
+
+Attention:
+This email may contain information intended for the sole use of
+the original recipient. Please respect this when sharing or
+disclosing this email's contents with any third party. If you
+believe you have received this email in error, please delete it
+and notify the sender or postmaster at solnetsolutions.co.nz as
+soon as possible. The content of this email does not necessarily
+reflect the views of Solnet Solutions Ltd.
+
+
+
+From jaime at robles.es  Wed Oct  7 22:45:04 2009
+From: jaime at robles.es (Jaime Robles)
+Date: Wed, 7 Oct 2009 22:45:04 +0200
+Subject: [Klog-devel] Dxcluster options
+In-Reply-To: <31888_1254942934_4ACCE8D6_31888_90_1_200910080815.38568.andrew.goldie@solnetsolutions.co.nz>
+References: <mailman.65.1254909701.17820.klog-devel@lists.berlios.de>
+	<31888_1254942934_4ACCE8D6_31888_90_1_200910080815.38568.andrew.goldie@solnetsolutions.co.nz>
+Message-ID: <76855B2F-2EE1-4BEA-A089-BFA3633141DD@robles.es>
+
+
+> Yes I was thinking about the cluster options. I think probably one  
+> of the
+> easist is to use a QListWidget. This has an insertItem() funtion:
+What you are telling sounds good. Maybe it is a good idea.
+Remember that it is needed that the user can clicking on the Dxspots  
+to add them to the log and we also KLog has to color the DXspots to  
+show if the spot is a needed, worked, ...
+
+If we can do the all the needed functions, we should test it! :-)
+
+
+> I have also noticed that there is an error in here somewhere that  
+> crashes the  program. It is a very weird one and it only appears  
+> sometimes.
+Don't you have any clue? When does it happen?
+
+> investigation and I think it has something to do identfying where the
+> callsigns come from, possibly the world class.
+Now I cannot add the new task, it is my time to go to bed (22:43), add  
+a task or the bug to remember it.
+
+> Should we change the QTreeWidget to a QListWidget and use the  
+> insertItem(row, item) function?
+Let's try. :-)
+
+>
+
+Jaime
+
+
+From jaime at robles.es  Thu Oct  8 21:13:47 2009
+From: jaime at robles.es (Jaime Robles)
+Date: Thu, 8 Oct 2009 21:13:47 +0200
+Subject: [Klog-devel] Fwd: [Klog-svn] r55 - trunk/src
+References: <200910081849.n98InUI3020031@sheep.berlios.de>
+Message-ID: <4CA9D892-37BA-4BBF-B76C-0C862FE5621A@robles.es>
+
+Andrew,
+
+You have just overwritten the r54! :-( and these changes were lost...  
+Any idea about how to recover them "automagically".
+
+Jaime
+
+Inicio del mensaje reenviado:
+
+> De: agoldie at BerliOS <agoldie at mail.berlios.de>
+> Fecha: 8 de octubre de 2009 20:49:30 GMT+02:00
+> Para: klog-svn at lists.berlios.de
+> Asunto: [Klog-svn] r55 - trunk/src
+>
+
+> Author: agoldie
+> Date: 2009-10-08 20:49:30 +0200 (Thu, 08 Oct 2009)
+> New Revision: 55
+>
+> Modified:
+>   trunk/src/klog.cpp
+>   trunk/src/klog.h
+>   trunk/src/klog.ui
+> Log:
+> Add listwidget
+>
+>
+>
+> Modified: trunk/src/klog.cpp
+> ===================================================================
+> --- trunk/src/klog.cpp    2009-10-08 18:40:19 UTC (rev 54)
+> +++ trunk/src/klog.cpp    2009-10-08 18:49:30 UTC (rev 55)
+> @@ -99,17 +99,16 @@
+>     //connect(helpIndexAction, SIGNAL(triggered()), this, SLOT 
+> (helpIndex()));
+>     connect(iotaIntSpinBox, SIGNAL(valueChanged(int)), this, SLOT 
+> (slotIOTAChanged()));
+>     connect(iotaComboBox, SIGNAL(activated(QString)), this, SLOT 
+> (slotIOTAChanged()));
+> -//    connect(awardsComboBox, SIGNAL(textChanged(QString)), this,  
+> SLOT(slotLocalAwardChanged()));
+> +    connect(awardsComboBox, SIGNAL(textChanged(QString)), this, SLOT 
+> (slotLocalAwardChanged()));
+>     connect(toolsMerge_QSO_dataAction, SIGNAL(triggered()), this,  
+> SLOT(slotcompleteThePreviouslyWorked()));
+>     connect(ActionCabrilloImport, SIGNAL(triggered()), this, SLOT 
+> (slotImportCabrillo()));
+>     connect(qrzLineEdit, SIGNAL(textChanged(QString)), this, SLOT 
+> (slotQrzChanged()));
+>     connect(logTreeWidget, SIGNAL(itemDoubleClicked(QTreeWidgetItem  
+> *, int)), this, SLOT(slotQsoSelectedForEdit(QTreeWidgetItem *, int)));
+> -    connect(logTreeWidget, SIGNAL(itemClicked(QTreeWidgetItem *,  
+> int)), this, SLOT(slotQsoRightButtonFromLog(QTreeWidgetItem *, int)));
+>     connect(searchQsosTreeWidget, SIGNAL(itemDoubleClicked 
+> (QTreeWidgetItem *, int)), this, SLOT(slotQsoSearchSelectedForEdit 
+> (QTreeWidgetItem *, int)));
+> -    connect(dxclusterTreeWidget, SIGNAL(itemDoubleClicked 
+> (QTreeWidgetItem *, int)), this, SLOT(slotClusterSpotToLog 
+> (QTreeWidgetItem *, int)));
+> +    connect(dxclusterListWidget, SIGNAL(itemDoubleClicked 
+> (QListWidgetItem *, int)), this, SLOT(slotClusterSpotToLog 
+> (QListWidgetItem *, int)));
+>     connect(ActionQsoDelete, SIGNAL(triggered()), this, SLOT 
+> (slotQsoDelete()));
+> -    connect(ActionQslRec, SIGNAL(triggered()), this, SLOT(slotQSLRec 
+> ()));
+> -    connect(ActionQsoSen, SIGNAL(triggered()), this, SLOT 
+> (slotQSLSent()));
+> +    connect(ActionQslRec, SIGNAL(triggered()), this, SLOT 
+> (slotQSLRec));
+> +    connect(ActionQsoSen, SIGNAL(triggered()), this, SLOT 
+> (slotQSLSent));
+>
+>
+>
+> @@ -185,7 +184,6 @@
+> //qDebug() << "KLog::~KLog";
+> }
+>
+> -
+> bool Klog::haveWorld(){
+>     //qDebug() << "KLog::haveWorld";
+>     //TODO:setTextFormat(Qt::RichText) to display an URL as a link
+> @@ -1469,33 +1467,15 @@
+>
+> }
+>
+> -void Klog::mousePressEvent(QMouseEvent *event){
+> -qDebug() << "KLog::mousePressEvent";
+> -  if (event->button() == Qt::LeftButton) {
+> -qDebug() << "KLog::mousePressEvent-left";
+> -  }else if (event->button() == Qt::RightButton) {
+> -qDebug() << "KLog::mousePressEvent-right";
+> -  }
+> -  lastPoint = event->pos();
+> -//  logTreeWidget
+> -}
+> -
+> -void Klog::mouseMoveEvent(QMouseEvent *event){}
+> -void Klog::mouseReleaseEvent(QMouseEvent *event){}
+> -
+> //TODO: DELETED FOR QT4 MIGRATION: Add the rightbutton
+> -void Klog::slotQsoRightButtonFromLog(QTreeWidgetItem * item, int){
+> - qDebug()  << "KLog::slotQsoRightButtonFromLog";
+> -
+> - if (QApplication::mouseButtons()==Qt::RightButton){
+> -   qDebug()  << "KLog::slotQsoRightButtonFromLog: right button";
+> -    if (item){
+> -        Klog::j = (item->text(0)).toInt(); // j is the QSO number
+> -        //showMenuRightButton(Klog::j, p);
+> -    }
+> -  }
+> -}
+> -
+> +// void Klog::slotQsoRightButtonFromLog(QTreeWidgetItem * item,  
+> const QPoint &p){
+> +// //cout << "KLog::slotQsoRightButtonFromLog" << endl;
+> +//    if (item){
+> +//        Klog::j = (item->text(0)).toInt(); // j is the QSO number
+> +//        showMenuRightButton(Klog::j, p);
+> +//    }
+> +// }
+> +//
+> // void Klog::slotQsoRightButtonFromSearch(QTreeWidgetItem * item,  
+> const QPoint &p){
+> // //Maybe This could be deleted and use the previous  
+> "slotQsoRightButtonFromLog" to perform
+> // // this actions...
+> @@ -4117,9 +4097,9 @@
+>     connect( socket, SIGNAL(error(int)), SLOT(slotClusterSocketError 
+> (int)) );
+>     // connect to the server
+>
+> -    dxclusterTreeWidget->setSortingEnabled ( false);
+> +    dxclusterListWidget->setSortingEnabled ( false);
+>     downTabs->setCurrentIndex(1); // We set the active tab to be the  
+> cluster's
+> -    dxClusterSpotItem * item = new dxClusterSpotItem 
+> (dxclusterTreeWidget, i18n("Trying to connect to the server\n"),  
+> defaultColor);
+> +    dxClusterSpotItem * item = new dxClusterSpotItem 
+> (dxclusterListWidget, i18n("Trying to connect to the server\n"),  
+> defaultColor);
+>     socket->connectToHost( DXClusterServerToUse.section(':',0,0),  
+> (DXClusterServerToUse.section(':',1,1)).toInt() );
+> }
+>
+> @@ -4315,7 +4295,7 @@
+>         dxSpotColor = defaultColor;
+>     }
+>     if (dxClusterString.length()>=5){
+> -        dxClusterSpotItem * item = new dxClusterSpotItem 
+> (dxclusterTreeWidget, dxClusterString, dxSpotColor);
+> +        dxClusterSpotItem * item = new dxClusterSpotItem 
+> (dxclusterListWidget, dxClusterString, dxSpotColor);
+>         dxSpotColor = defaultColor; // The color should be default  
+> by default
+>     }
+>     }
+> @@ -4323,7 +4303,7 @@
+>
+> void Klog::slotClusterSocketConnected(){
+> //qDebug() << "KLog::slotClusterSocketConnected" << endl;
+> -    dxClusterSpotItem * item = new dxClusterSpotItem 
+> (dxclusterTreeWidget, i18n("Connected to server"), defaultColor);
+> +    dxClusterSpotItem * item = new dxClusterSpotItem 
+> (dxclusterListWidget, i18n("Connected to server"), defaultColor);
+>     dxClusterConnected = true;
+>
+>     if ( dxClusterConnected ) {
+> @@ -4340,13 +4320,13 @@
+>
+> void Klog::slotClusterSocketConnectionClosed(){
+> //qDebug() << "KLog::slotClusterSocketConnectionClosed" << endl;
+> -    dxClusterSpotItem * item = new dxClusterSpotItem 
+> (dxclusterTreeWidget, i18n("Connection closed by the server"),  
+> defaultColor);
+> +    dxClusterSpotItem * item = new dxClusterSpotItem 
+> (dxclusterListWidget, i18n("Connection closed by the server"),  
+> defaultColor);
+>     dxClusterConnected = false;
+> }
+>
+> void Klog::slotClusterSocketClosed(){
+> //qDebug() << "KLog::slotClusterSocketCluster" << endl;
+> -    dxClusterSpotItem * item = new dxClusterSpotItem 
+> (dxclusterTreeWidget, i18n("Connection closed"), defaultColor );
+> +    dxClusterSpotItem * item = new dxClusterSpotItem 
+> (dxclusterListWidget, i18n("Connection closed"), defaultColor );
+>     dxClusterConnected = false;
+> }
+>
+> @@ -4400,7 +4380,7 @@
+>
+>     } */
+>
+> -  dxClusterSpotItem * item = new dxClusterSpotItem 
+> (dxclusterTreeWidget, i18n("Error number %1 occurred").arg(e),  
+> defaultColor);
+> +  dxClusterSpotItem * item = new dxClusterSpotItem 
+> (dxclusterListWidget, i18n("Error number %1 occurred").arg(e),  
+> defaultColor);
+> }
+>
+> void Klog::slotClusterClearInputLine(){
+> @@ -4437,10 +4417,10 @@
+>
+> // This takes a DX-spot from the DXCluster window and copies to the  
+> QSO entry box
+> // when the user clicks on it.
+> -void Klog::slotClusterSpotToLog(QTreeWidgetItem * item, int){
+> +void Klog::slotClusterSpotToLog(QListWidgetItem * item, int row){
+> //cout << "KLog::slotClusterSpotToLog" << endl;
+>     if (item)
+> -        dxClusterString = item->text(0);
+> +        dxClusterString = item->text();
+>     else
+>         return;
+>     slotClearBtn();
+> @@ -4472,10 +4452,10 @@
+>     showWhere(enti);
+> }
+>
+> -void Klog::slotClusterSpotCheck(QTreeWidgetItem * item){
+> +void Klog::slotClusterSpotCheck(QListWidgetItem * item){
+> //cout << "KLog::slotClusterSpotCheck" << endl;
+>   if (item)
+> -    dxClusterString = item->text(0);
+> +    dxClusterString = item->text();
+>   else{
+>     //cout << "KLog: slotClusterSpotCheck Limpiamos con  
+> clearEntityBox-1" << endl;
+>     clearEntityBox();
+> @@ -5157,14 +5137,14 @@
+> **  
+> spots. 
+>                                                                  **
+> ** It may be moved to a self .h & .cpp  
+> archives                           **
+> *** 
+> *** 
+> *** 
+> *******************************************************************/
+> -dxClusterSpotItem::dxClusterSpotItem( QTreeWidget *parent, const  
+> QString& spot, const QColor& color ) : QTreeWidgetItem( parent ){
+> +dxClusterSpotItem::dxClusterSpotItem( QListWidget *parent, const  
+> QString& spot, const QColor& color ) : QListWidgetItem( parent ){
+> //cout << "KLog::dxClusterSpotItem - Constructor" << endl;
+>   spotColor = color;
+> -  setText(0, spot);
+> +  setText(spot);
+>   // Experimenting with fonts for the cluster
+>   QFont f("Helvetica");
+>   f.setFixedPitch(TRUE);
+> -  setFont(0, f);
+> +  setFont(f);
+> }
+>
+> dxClusterSpotItem::~dxClusterSpotItem(){
+>
+> Modified: trunk/src/klog.h
+> ===================================================================
+> --- trunk/src/klog.h    2009-10-08 18:40:19 UTC (rev 54)
+> +++ trunk/src/klog.h    2009-10-08 18:49:30 UTC (rev 55)
+> @@ -34,6 +34,7 @@
+> #include <QList>
+> #include <QPixmap>
+> #include <QTextStream>
+> +#include <QListWidget>
+> #include <QTreeWidget>
+> #include <QTreeWidgetItem>
+> #include <QFile>
+> @@ -169,7 +170,7 @@
+>     void slotQsoSelected (QTreeWidgetItem* item); // Just to see qso  
+> data
+>
+> //TODO: DELETED FOR QT4 MIGRATION: Add the rightbutton
+> -    void slotQsoRightButtonFromLog(QTreeWidgetItem * item, int);
+> +//    void slotQsoRightButtonFromLog(Q3ListViewItem * item, const  
+> QPoint &p);
+> //    void slotQsoRightButtonFromSearch(Q3ListViewItem * item, const  
+> QPoint &p);
+>     void slotModifyBtn();
+>     void showLogList();   // Shows the log in the botton widget
+> @@ -205,18 +206,14 @@
+>     void slotClusterSocketError( int e );
+>     void slotClusterConnect();
+>     void slotClusterClearInputLine();
+> -    void slotClusterSpotToLog(QTreeWidgetItem* item, int);
+> -    void slotClusterSpotCheck(QTreeWidgetItem* item);
+> +    void slotClusterSpotToLog(QListWidgetItem* item, int);
+> +    void slotClusterSpotCheck(QListWidgetItem* item);
+> //    void slotClusterSetup();
+> //    void slotKlogSetup();
+>     void slotBugReport();
+>     void slotModeChanged (int i);
+>     void slotBandChanged ();
+>     void fillDXCCList();    // Fill the KLog tab
+> -  protected:
+> -    virtual void mousePressEvent(QMouseEvent *event);
+> -    virtual void mouseMoveEvent(QMouseEvent *event);
+> -    virtual void mouseReleaseEvent(QMouseEvent *event);
+>
+>   private:
+>
+> @@ -442,13 +439,11 @@
+>     QAction *recQSOAct;
+>     QAction *senQSOAct;
+>     QActionGroup *qsoActionsGroup;
+> -
+> -    QPoint lastPoint;
+> };
+>
+> -class dxClusterSpotItem : public QTreeWidgetItem {
+> +class dxClusterSpotItem : public QListWidgetItem {
+> public:
+> -dxClusterSpotItem( QTreeWidget* parent, const QString& spot, const  
+> QColor& color );
+> +dxClusterSpotItem( QListWidget* parent, const QString& spot, const  
+> QColor& color );
+> ~dxClusterSpotItem();
+> virtual void paintCell( QPainter *p, const QPalette &cg,
+> int column, int width, int alignment );
+>
+> Modified: trunk/src/klog.ui
+> ===================================================================
+> --- trunk/src/klog.ui    2009-10-08 18:40:19 UTC (rev 54)
+> +++ trunk/src/klog.ui    2009-10-08 18:49:30 UTC (rev 55)
+> @@ -10,8 +10,8 @@
+>    <rect>
+>     <x>0</x>
+>     <y>0</y>
+> -    <width>968</width>
+> -    <height>720</height>
+> +    <width>966</width>
+> +    <height>718</height>
+>    </rect>
+>   </property>
+>   <property name="sizePolicy">
+> @@ -49,7 +49,7 @@
+>        </size>
+>       </property>
+>       <property name="currentIndex">
+> -       <number>0</number>
+> +       <number>1</number>
+>       </property>
+>       <widget class="QWidget" name="logdisplayTab">
+>        <attribute name="title">
+> @@ -120,15 +120,6 @@
+>         <string>Cluster</string>
+>        </attribute>
+>        <layout class="QGridLayout" name="gridLayout_5">
+> -        <item row="0" column="0" colspan="3">
+> -         <widget class="QTreeWidget" name="dxclusterTreeWidget">
+> -          <column>
+> -           <property name="text">
+> -            <string>KLog DX Cluster</string>
+> -           </property>
+> -          </column>
+> -         </widget>
+> -        </item>
+>         <item row="1" column="0">
+>          <widget class="QLineEdit" name="ClusterkLineEditInPut"/>
+>         </item>
+> @@ -146,6 +137,9 @@
+>           </property>
+>          </widget>
+>         </item>
+> +        <item row="0" column="0">
+> +         <widget class="QListWidget" name="dxclusterListWidget"/>
+> +        </item>
+>        </layout>
+>       </widget>
+>       <widget class="QWidget" name="dxccTab">
+> @@ -1282,7 +1276,7 @@
+>         </property>
+>         <layout class="QGridLayout" name="gridLayout">
+>          <item row="0" column="0">
+> -          <widget class="KLed" name="kledColor"/>
+> +          <widget class="KLed" name="kledColor" native="true"/>
+>          </item>
+>          <item row="0" column="1" colspan="2">
+>           <widget class="QLineEdit" name="qrzLineEdit">
+> @@ -2568,8 +2562,8 @@
+>     <rect>
+>      <x>0</x>
+>      <y>0</y>
+> -     <width>968</width>
+> -     <height>28</height>
+> +     <width>966</width>
+> +     <height>23</height>
+>     </rect>
+>    </property>
+>    <property name="defaultUp">
+>
+> _______________________________________________
+> Klog-svn mailing list
+> Klog-svn at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/klog-svn
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/klog-devel/attachments/20091008/280455f6/attachment.html>
+
+From Andrew.Goldie at solnetsolutions.co.nz  Thu Oct  8 21:52:51 2009
+From: Andrew.Goldie at solnetsolutions.co.nz (Andrew Goldie)
+Date: Fri, 9 Oct 2009 08:52:51 +1300
+Subject: [Klog-devel] Klog-devel Digest, Vol 2, Issue 6
+In-Reply-To: <mailman.657.1255029216.5709.klog-devel@lists.berlios.de>
+References: <mailman.657.1255029216.5709.klog-devel@lists.berlios.de>
+Message-ID: <12496_1255031572_4ACE4314_12496_248_1_OF6A4ED0E6.F953FF6B-ONCC257649.006D356D-CC257649.006D3570@solnetsolutions.co.nz>
+
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/klog-devel/attachments/20091009/1edcb2da/attachment.html>
+
+From jaime at robles.es  Fri Oct  9 07:07:59 2009
+From: jaime at robles.es (Jaime Robles)
+Date: Fri, 9 Oct 2009 07:07:59 +0200
+Subject: [Klog-devel] Klog-devel Digest, Vol 2, Issue 6
+In-Reply-To: <12496_1255031572_4ACE4314_12496_248_1_OF6A4ED0E6.F953FF6B-ONCC257649.006D356D-CC257649.006D3570@solnetsolutions.co.nz>
+References: <mailman.657.1255029216.5709.klog-devel@lists.berlios.de>
+	<12496_1255031572_4ACE4314_12496_248_1_OF6A4ED0E6.F953FF6B-ONCC257649.006D356D-CC257649.006D3570@solnetsolutions.co.nz>
+Message-ID: <6CA0BA47-D221-4836-A8E0-3865B3D03B04@robles.es>
+
+We were working in parallel on the same version of the file. I  
+uploaded and just some minutes after you uploaded also. My job was  
+overwritten. :-)
+
+Don't worry I will try to upload a file with the changes again.
+
+I was asking if svn has any functionality to merge two revisions so it  
+is possible to get all the changes automatically.
+
+Jaime
+
+El 08/10/2009, a las 21:52, Andrew Goldie <Andrew.Goldie at solnetsolutions.co.nz 
+ > escribi?:
+
+> Hi Jaime,
+>
+> So sorry about that.. I don't know what happened.
+>
+> I just uploaded a change - a fairly simple one so maybe we could go  
+> back to revision 52 or 53 would that be any good?
+>
+> Andrew
+>
+>
+> -----klog-devel-bounces at lists.berlios.de wrote: -----
+>
+> To: klog-devel at lists.berlios.de
+> From: klog-devel-request at lists.berlios.de
+> Sent by: klog-devel-bounces at lists.berlios.de
+> Date: 09/10/2009 08:13AM
+> Subject: Klog-devel Digest, Vol 2, Issue 6
+>
+> Send Klog-devel mailing list submissions to
+>     	klog-devel at lists.berlios.de
+>
+> To subscribe or unsubscribe via the World Wide Web, visit
+>     	https://lists.berlios.de/mailman/listinfo/klog-devel
+> or, via email, send a message with subject or body 'help' to
+>     	klog-devel-request at lists.berlios.de
+>
+> You can reach the person managing the list at
+>     	klog-devel-owner at lists.berlios.de
+>
+> When replying, please edit your Subject line so it is more specific
+> than "Re: Contents of Klog-devel digest..."
+>
+>
+> Today's Topics:
+>
+>    1. Fwd: [Klog-svn] r55 - trunk/src (Jaime Robles)
+>
+>
+> ----------------------------------------------------------------------
+>
+> Message: 1
+> Date: Thu, 8 Oct 2009 21:13:47 +0200
+> From: Jaime Robles <jaime at robles.es>
+> Subject: [Klog-devel] Fwd: [Klog-svn] r55 - trunk/src
+> To: "klog-devel at lists.berlios.de" <klog-devel at lists.berlios.de>
+> Message-ID: <4CA9D892-37BA-4BBF-B76C-0C862FE5621A at robles.es>
+> Content-Type: text/plain; charset="us-ascii"
+>
+> Andrew,
+>
+> You have just overwritten the r54! :-( and these changes were lost...
+> Any idea about how to recover them "automagically".
+>
+> Jaime
+>
+> Inicio del mensaje reenviado:
+>
+> > De: agoldie at BerliOS <agoldie at mail.berlios.de>
+> > Fecha: 8 de octubre de 2009 20:49:30 GMT+02:00
+> > Para: klog-svn at lists.berlios.de
+> > Asunto: [Klog-svn] r55 - trunk/src
+> >
+>
+> > Author: agoldie
+> > Date: 2009-10-08 20:49:30 +0200 (Thu, 08 Oct 2009)
+> > New Revision: 55
+> >
+> > Modified:
+> >   trunk/src/klog.cpp
+> >   trunk/src/klog.h
+> >   trunk/src/klog.ui
+> > Log:
+> > Add listwidget
+> >
+> >
+> >
+> > Modified: trunk/src/klog.cpp
+> > ===================================================================
+> > --- trunk/src/klog.cpp    2009-10-08 18:40:19 UTC (rev 54)
+> > +++ trunk/src/klog.cpp    2009-10-08 18:49:30 UTC (rev 55)
+> > @@ -99,17 +99,16 @@
+> >     //connect(helpIndexAction, SIGNAL(triggered()), this, SLOT
+> > (helpIndex()));
+> >     connect(iotaIntSpinBox, SIGNAL(valueChanged(int)), this, SLOT
+> > (slotIOTAChanged()));
+> >     connect(iotaComboBox, SIGNAL(activated(QString)), this, SLOT
+> > (slotIOTAChanged()));
+> > -//    connect(awardsComboBox, SIGNAL(textChanged(QString)), this,
+> > SLOT(slotLocalAwardChanged()));
+> > +    connect(awardsComboBox, SIGNAL(textChanged(QString)), this,  
+> SLOT
+> > (slotLocalAwardChanged()));
+> >     connect(toolsMerge_QSO_dataAction, SIGNAL(triggered()), this,
+> > SLOT(slotcompleteThePreviouslyWorked()));
+> >     connect(ActionCabrilloImport, SIGNAL(triggered()), this, SLOT
+> > (slotImportCabrillo()));
+> >     connect(qrzLineEdit, SIGNAL(textChanged(QString)), this, SLOT
+> > (slotQrzChanged()));
+> >     connect(logTreeWidget, SIGNAL(itemDoubleClicked(QTreeWidgetItem
+> > *, int)), this, SLOT(slotQsoSelectedForEdit(QTreeWidgetItem *,  
+> int)));
+> > -    connect(logTreeWidget, SIGNAL(itemClicked(QTreeWidgetItem *,
+> > int)), this, SLOT(slotQsoRightButtonFromLog(QTreeWidgetItem *,  
+> int)));
+> >     connect(searchQsosTreeWidget, SIGNAL(itemDoubleClicked
+> > (QTreeWidgetItem *, int)), this, SLOT(slotQsoSearchSelectedForEdit
+> > (QTreeWidgetItem *, int)));
+> > -    connect(dxclusterTreeWidget, SIGNAL(itemDoubleClicked
+> > (QTreeWidgetItem *, int)), this, SLOT(slotClusterSpotToLog
+> > (QTreeWidgetItem *, int)));
+> > +    connect(dxclusterListWidget, SIGNAL(itemDoubleClicked
+> > (QListWidgetItem *, int)), this, SLOT(slotClusterSpotToLog
+> > (QListWidgetItem *, int)));
+> >     connect(ActionQsoDelete, SIGNAL(triggered()), this, SLOT
+> > (slotQsoDelete()));
+> > -    connect(ActionQslRec, SIGNAL(triggered()), this, SLOT 
+> (slotQSLRec
+> > ()));
+> > -    connect(ActionQsoSen, SIGNAL(triggered()), this, SLOT
+> > (slotQSLSent()));
+> > +    connect(ActionQslRec, SIGNAL(triggered()), this, SLOT
+> > (slotQSLRec));
+> > +    connect(ActionQsoSen, SIGNAL(triggered()), this, SLOT
+> > (slotQSLSent));
+> >
+> >
+> >
+> > @@ -185,7 +184,6 @@
+> > //qDebug() << "KLog::~KLog";
+> > }
+> >
+> > -
+> > bool Klog::haveWorld(){
+> >     //qDebug() << "KLog::haveWorld";
+> >     //TODO:setTextFormat(Qt::RichText) to display an URL as a link
+> > @@ -1469,33 +1467,15 @@
+> >
+> > }
+> >
+> > -void Klog::mousePressEvent(QMouseEvent *event){
+> > -qDebug() << "KLog::mousePressEvent";
+> > -  if (event->button() == Qt::LeftButton) {
+> > -qDebug() << "KLog::mousePressEvent-left";
+> > -  }else if (event->button() == Qt::RightButton) {
+> > -qDebug() << "KLog::mousePressEvent-right";
+> > -  }
+> > -  lastPoint = event->pos();
+> > -//  logTreeWidget
+> > -}
+> > -
+> > -void Klog::mouseMoveEvent(QMouseEvent *event){}
+> > -void Klog::mouseReleaseEvent(QMouseEvent *event){}
+> > -
+> > //TODO: DELETED FOR QT4 MIGRATION: Add the rightbutton
+> > -void Klog::slotQsoRightButtonFromLog(QTreeWidgetItem * item, int){
+> > - qDebug()  << "KLog::slotQsoRightButtonFromLog";
+> > -
+> > - if (QApplication::mouseButtons()==Qt::RightButton){
+> > -   qDebug()  << "KLog::slotQsoRightButtonFromLog: right button";
+> > -    if (item){
+> > -        Klog::j = (item->text(0)).toInt(); // j is the QSO number
+> > -        //showMenuRightButton(Klog::j, p);
+> > -    }
+> > -  }
+> > -}
+> > -
+> > +// void Klog::slotQsoRightButtonFromLog(QTreeWidgetItem * item,
+> > const QPoint &p){
+> > +// //cout << "KLog::slotQsoRightButtonFromLog" << endl;
+> > +//    if (item){
+> > +//        Klog::j = (item->text(0)).toInt(); // j is the QSO number
+> > +//        showMenuRightButton(Klog::j, p);
+> > +//    }
+> > +// }
+> > +//
+> > // void Klog::slotQsoRightButtonFromSearch(QTreeWidgetItem * item,
+> > const QPoint &p){
+> > // //Maybe This could be deleted and use the previous
+> > "slotQsoRightButtonFromLog" to perform
+> > // // this actions...
+> > @@ -4117,9 +4097,9 @@
+> >     connect( socket, SIGNAL(error(int)), SLOT(slotClusterSocketError
+> > (int)) );
+> >     // connect to the server
+> >
+> > -    dxclusterTreeWidget->setSortingEnabled ( false);
+> > +    dxclusterListWidget->setSortingEnabled ( false);
+> >     downTabs->setCurrentIndex(1); // We set the active tab to be the
+> > cluster's
+> > -    dxClusterSpotItem * item = new dxClusterSpotItem
+> > (dxclusterTreeWidget, i18n("Trying to connect to the server\n"),
+> > defaultColor);
+> > +    dxClusterSpotItem * item = new dxClusterSpotItem
+> > (dxclusterListWidget, i18n("Trying to connect to the server\n"),
+> > defaultColor);
+> >     socket->connectToHost( DXClusterServerToUse.section(':',0,0),
+> > (DXClusterServerToUse.section(':',1,1)).toInt() );
+> > }
+> >
+> > @@ -4315,7 +4295,7 @@
+> >         dxSpotColor = defaultColor;
+> >     }
+> >     if (dxClusterString.length()>=5){
+> > -        dxClusterSpotItem * item = new dxClusterSpotItem
+> > (dxclusterTreeWidget, dxClusterString, dxSpotColor);
+> > +        dxClusterSpotItem * item = new dxClusterSpotItem
+> > (dxclusterListWidget, dxClusterString, dxSpotColor);
+> >         dxSpotColor = defaultColor; // The color should be default
+> > by default
+> >     }
+> >     }
+> > @@ -4323,7 +4303,7 @@
+> >
+> > void Klog::slotClusterSocketConnected(){
+> > //qDebug() << "KLog::slotClusterSocketConnected" << endl;
+> > -    dxClusterSpotItem * item = new dxClusterSpotItem
+> > (dxclusterTreeWidget, i18n("Connected to server"), defaultColor);
+> > +    dxClusterSpotItem * item = new dxClusterSpotItem
+> > (dxclusterListWidget, i18n("Connected to server"), defaultColor);
+> >     dxClusterConnected = true;
+> >
+> >     if ( dxClusterConnected ) {
+> > @@ -4340,13 +4320,13 @@
+> >
+> > void Klog::slotClusterSocketConnectionClosed(){
+> > //qDebug() << "KLog::slotClusterSocketConnectionClosed" << endl;
+> > -    dxClusterSpotItem * item = new dxClusterSpotItem
+> > (dxclusterTreeWidget, i18n("Connection closed by the server"),
+> > defaultColor);
+> > +    dxClusterSpotItem * item = new dxClusterSpotItem
+> > (dxclusterListWidget, i18n("Connection closed by the server"),
+> > defaultColor);
+> >     dxClusterConnected = false;
+> > }
+> >
+> > void Klog::slotClusterSocketClosed(){
+> > //qDebug() << "KLog::slotClusterSocketCluster" << endl;
+> > -    dxClusterSpotItem * item = new dxClusterSpotItem
+> > (dxclusterTreeWidget, i18n("Connection closed"), defaultColor );
+> > +    dxClusterSpotItem * item = new dxClusterSpotItem
+> > (dxclusterListWidget, i18n("Connection closed"), defaultColor );
+> >     dxClusterConnected = false;
+> > }
+> >
+> > @@ -4400,7 +4380,7 @@
+> >
+> >     } */
+> >
+> > -  dxClusterSpotItem * item = new dxClusterSpotItem
+> > (dxclusterTreeWidget, i18n("Error number %1 occurred").arg(e),
+> > defaultColor);
+> > +  dxClusterSpotItem * item = new dxClusterSpotItem
+> > (dxclusterListWidget, i18n("Error number %1 occurred").arg(e),
+> > defaultColor);
+> > }
+> >
+> > void Klog::slotClusterClearInputLine(){
+> > @@ -4437,10 +4417,10 @@
+> >
+> > // This takes a DX-spot from the DXCluster window and copies to the
+> > QSO entry box
+> > // when the user clicks on it.
+> > -void Klog::slotClusterSpotToLog(QTreeWidgetItem * item, int){
+> > +void Klog::slotClusterSpotToLog(QListWidgetItem * item, int row){
+> > //cout << "KLog::slotClusterSpotToLog" << endl;
+> >     if (item)
+> > -        dxClusterString = item->text(0);
+> > +        dxClusterString = item->text();
+> >     else
+> >         return;
+> >     slotClearBtn();
+> > @@ -4472,10 +4452,10 @@
+> >     showWhere(enti);
+> > }
+> >
+> > -void Klog::slotClusterSpotCheck(QTreeWidgetItem * item){
+> > +void Klog::slotClusterSpotCheck(QListWidgetItem * item){
+> > //cout << "KLog::slotClusterSpotCheck" << endl;
+> >   if (item)
+> > -    dxClusterString = item->text(0);
+> > +    dxClusterString = item->text();
+> >   else{
+> >     //cout << "KLog: slotClusterSpotCheck Limpiamos con
+> > clearEntityBox-1" << endl;
+> >     clearEntityBox();
+> > @@ -5157,14 +5137,14 @@
+> > **
+> > spots.
+> >                                                                  **
+> > ** It may be moved to a self .h & .cpp
+> > archives                           **
+> > ***
+> > ***
+> > ***
+> > *******************************************************************/
+> > -dxClusterSpotItem::dxClusterSpotItem( QTreeWidget *parent, const
+> > QString& spot, const QColor& color ) : QTreeWidgetItem( parent ){
+> > +dxClusterSpotItem::dxClusterSpotItem( QListWidget *parent, const
+> > QString& spot, const QColor& color ) : QListWidgetItem( parent ){
+> > //cout << "KLog::dxClusterSpotItem - Constructor" << endl;
+> >   spotColor = color;
+> > -  setText(0, spot);
+> > +  setText(spot);
+> >   // Experimenting with fonts for the cluster
+> >   QFont f("Helvetica");
+> >   f.setFixedPitch(TRUE);
+> > -  setFont(0, f);
+> > +  setFont(f);
+> > }
+> >
+> > dxClusterSpotItem::~dxClusterSpotItem(){
+> >
+> > Modified: trunk/src/klog.h
+> > ===================================================================
+> > --- trunk/src/klog.h    2009-10-08 18:40:19 UTC (rev 54)
+> > +++ trunk/src/klog.h    2009-10-08 18:49:30 UTC (rev 55)
+> > @@ -34,6 +34,7 @@
+> > #include <QList>
+> > #include <QPixmap>
+> > #include <QTextStream>
+> > +#include <QListWidget>
+> > #include <QTreeWidget>
+> > #include <QTreeWidgetItem>
+> > #include <QFile>
+> > @@ -169,7 +170,7 @@
+> >     void slotQsoSelected (QTreeWidgetItem* item); // Just to see qso
+> > data
+> >
+> > //TODO: DELETED FOR QT4 MIGRATION: Add the rightbutton
+> > -    void slotQsoRightButtonFromLog(QTreeWidgetItem * item, int);
+> > +//    void slotQsoRightButtonFromLog(Q3ListViewItem * item, const
+> > QPoint &p);
+> > //    void slotQsoRightButtonFromSearch(Q3ListViewItem * item, const
+> > QPoint &p);
+> >     void slotModifyBtn();
+> >     void showLogList();   // Shows the log in the botton widget
+> > @@ -205,18 +206,14 @@
+> >     void slotClusterSocketError( int e );
+> >     void slotClusterConnect();
+> >     void slotClusterClearInputLine();
+> > -    void slotClusterSpotToLog(QTreeWidgetItem* item, int);
+> > -    void slotClusterSpotCheck(QTreeWidgetItem* item);
+> > +    void slotClusterSpotToLog(QListWidgetItem* item, int);
+> > +    void slotClusterSpotCheck(QListWidgetItem* item);
+> > //    void slotClusterSetup();
+> > //    void slotKlogSetup();
+> >     void slotBugReport();
+> >     void slotModeChanged (int i);
+> >     void slotBandChanged ();
+> >     void fillDXCCList();    // Fill the KLog tab
+> > -  protected:
+> > -    virtual void mousePressEvent(QMouseEvent *event);
+> > -    virtual void mouseMoveEvent(QMouseEvent *event);
+> > -    virtual void mouseReleaseEvent(QMouseEvent *event);
+> >
+> >   private:
+> >
+> > @@ -442,13 +439,11 @@
+> >     QAction *recQSOAct;
+> >     QAction *senQSOAct;
+> >     QActionGroup *qsoActionsGroup;
+> > -
+> > -    QPoint lastPoint;
+> > };
+> >
+> > -class dxClusterSpotItem : public QTreeWidgetItem {
+> > +class dxClusterSpotItem : public QListWidgetItem {
+> > public:
+> > -dxClusterSpotItem( QTreeWidget* parent, const QString& spot, const
+> > QColor& color );
+> > +dxClusterSpotItem( QListWidget* parent, const QString& spot, const
+> > QColor& color );
+> > ~dxClusterSpotItem();
+> > virtual void paintCell( QPainter *p, const QPalette &cg,
+> > int column, int width, int alignment );
+> >
+> > Modified: trunk/src/klog.ui
+> > ===================================================================
+> > --- trunk/src/klog.ui    2009-10-08 18:40:19 UTC (rev 54)
+> > +++ trunk/src/klog.ui    2009-10-08 18:49:30 UTC (rev 55)
+> > @@ -10,8 +10,8 @@
+> >    <rect>
+> >     <x>0</x>
+> >     <y>0</y>
+> > -    <width>968</width>
+> > -    <height>720</height>
+> > +    <width>966</width>
+> > +    <height>718</height>
+> >    </rect>
+> >   </property>
+> >   <property name="sizePolicy">
+> > @@ -49,7 +49,7 @@
+> >        </size>
+> >       </property>
+> >       <property name="currentIndex">
+> > -       <number>0</number>
+> > +       <number>1</number>
+> >       </property>
+> >       <widget class="QWidget" name="logdisplayTab">
+> >        <attribute name="title">
+> > @@ -120,15 +120,6 @@
+> >         <string>Cluster</string>
+> >        </attribute>
+> >        <layout class="QGridLayout" name="gridLayout_5">
+> > -        <item row="0" column="0" colspan="3">
+> > -         <widget class="QTreeWidget" name="dxclusterTreeWidget">
+> > -          <column>
+> > -           <property name="text">
+> > -            <string>KLog DX Cluster</string>
+> > -           </property>
+> > -          </column>
+> > -         </widget>
+> > -        </item>
+> >         <item row="1" column="0">
+> >          <widget class="QLineEdit" name="ClusterkLineEditInPut"/>
+> >         </item>
+> > @@ -146,6 +137,9 @@
+> >           </property>
+> >          </widget>
+> >         </item>
+> > +        <item row="0" column="0">
+> > +         <widget class="QListWidget" name="dxclusterListWidget"/>
+> > +        </item>
+> >        </layout>
+> >       </widget>
+> >       <widget class="QWidget" name="dxccTab">
+> > @@ -1282,7 +1276,7 @@
+> >         </property>
+> >         <layout class="QGridLayout" name="gridLayout">
+> >          <item row="0" column="0">
+> > -          <widget class="KLed" name="kledColor"/>
+> > +          <widget class="KLed" name="kledColor" native="true"/>
+> >          </item>
+> >          <item row="0" column="1" colspan="2">
+> >           <widget class="QLineEdit" name="qrzLineEdit">
+> > @@ -2568,8 +2562,8 @@
+> >     <rect>
+> >      <x>0</x>
+> >      <y>0</y>
+> > -     <width>968</width>
+> > -     <height>28</height>
+> > +     <width>966</width>
+> > +     <height>23</height>
+> >     </rect>
+> >    </property>
+> >    <property name="defaultUp">
+> >
+> > _______________________________________________
+> > Klog-svn mailing list
+> > Klog-svn at lists.berlios.de
+> > https://lists.berlios.de/mailman/listinfo/klog-svn
+> -------------- next part --------------
+> An HTML attachment was scrubbed...
+> URL: https://lists.berlios.de/pipermail/klog-devel/attachments/20091008/280455f6/attachment.html
+>
+> ------------------------------
+>
+> _______________________________________________
+> Klog-devel mailing list
+> Klog-devel at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/klog-devel
+>
+>
+> End of Klog-devel Digest, Vol 2, Issue 6
+> ****************************************
+>
+> Attention: This email may contain information intended for the sole  
+> use of the original recipient. Please respect this when sharing or  
+> disclosing this email's contents with any third party. If you  
+> believe you have received this email in error, please delete it and  
+> notify the sender or postmaster at solnetsolutions.co.nz as soon as  
+> possible. The content of this email does not necessarily reflect the  
+> views of Solnet Solutions Ltd.
+> _______________________________________________
+> Klog-devel mailing list
+> Klog-devel at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/klog-devel
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/klog-devel/attachments/20091009/88b17aa3/attachment.html>
+

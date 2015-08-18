@@ -1,0 +1,244 @@
+From jaime at robles.es  Tue Sep 27 18:57:55 2011
+From: jaime at robles.es (Jaime Robles)
+Date: Tue, 27 Sep 2011 18:57:55 +0200
+Subject: [Klog-devel] Klog Fedora 15
+In-Reply-To: <CAHg9EZo5MBJv50qR0Cm+T66qaBUGXsDPWwN1i-WDX_Un0L6QZQ@mail.gmail.com>
+References: <CAHg9EZo5MBJv50qR0Cm+T66qaBUGXsDPWwN1i-WDX_Un0L6QZQ@mail.gmail.com>
+Message-ID: <CAOinu-9FO9xcxg0VDf9u8Cv04NR-BGsXBnyePK4RydwpDDdnEA@mail.gmail.com>
+
+Hello Diogo,
+
+The last question first: Yes, there is a KLog-devel mailing list (in CC) and
+the URL is this one:
+https://lists.berlios.de/mailman/listinfo/klog-devel
+
+It has no traffic at all since I am developing KLog more or less alone since
+Andrew stopped to contribute :-(
+
+You are invited to help KLog!
+
+The second question, it seems as if you did not have the proper Qt
+libraries... I will investigate the error.
+
+The KLog user list is
+https://lists.berlios.de/mailman/listinfo/klog-usersand has more or
+less the same traffic than the -devel one.
+
+Jaime, EA4TV
+
+2011/9/27 Diogo Conde?o <diogocondeco at gmail.com>
+
+> Hi Jaime,
+>
+> I was interested in playing arround with your klog software, but when
+> compiling I always get the following error:
+>
+> Linking CXX executable klog
+> /usr/bin/ld: CMakeFiles/klog.dir/klognetwork.cpp.o: undefined reference to
+> symbol 'QHttp::abort()'
+> /usr/bin/ld: note: 'QHttp::abort()' is defined in DSO
+> /usr/lib/libQtNetwork.so.4 so try adding it to the linker command line
+> /usr/lib/libQtNetwork.so.4: could not read symbols: Invalid operation
+> collect2: ld returned 1 exit status
+> make[2]: *** [src/klog] Error 1
+> make[1]: *** [src/CMakeFiles/klog.dir/all] Error 2
+> make: *** [all] Error 2
+>
+>
+> Any idea of what may be? By the way is there any mailling list for devel
+> discussions?
+>
+> Runnig on a Fedora 15 maxine (updated) with qt v4.7.4 and i386 arch.
+>
+> Thanks,
+> Diogo
+> CT2IRW
+>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/klog-devel/attachments/20110927/25153288/attachment.html>
+
+From jaime at robles.es  Fri Sep 30 19:44:36 2011
+From: jaime at robles.es (Jaime Robles)
+Date: Fri, 30 Sep 2011 19:44:36 +0200
+Subject: [Klog-devel] KLog is moving..... Fwd: BerliOS will be closed on
+	31.12.2011 -
+Message-ID: <CAOinu-8LswZLfqyg=ZDk_tuu=6qWkxrF=zhN=6B4zPutuO7gkg@mail.gmail.com>
+
+Good afternoon all,
+
+As I have just known, Berlios will be closed on 31.12.2011.
+
+Berlios is where the KLog code has been hosted since I started the
+development in 2002 and it has worked perfectly since then.
+
+I will be moving all the KLog project to the new hosting (
+https://savannah.nongnu.org/projects/klog/ ) during the following days.
+
+I have created two mailing list in Savanah:
+
+http://lists.nongnu.org/mailman/listinfo/klog-users
+The list for user discussion about KLog
+
+http://lists.nongnu.org/mailman/listinfo/klog-devel
+The development mailing list to coordinate the development.
+
+Please subscribe to the appropriate mailing list if you are still interested
+as I will NOT move your subscription to the new mailing lists.
+
+The main homepage is still at my homepage
+http://jaime.robles.es/klog(although I am also thinking on moving it)
+
+I will keep you informed.
+
+Thank you for using KLog
+
+Jaime, EA4TV
+
+
+---------- Forwarded message ----------
+From: <admin at berlios.de>
+Date: 2011/9/30
+Subject: BerliOS will be closed on 31.12.2011
+To: admin at berlios.de
+
+
+Sehr geehrte BerliOS Entwickler und Anwender,
+
+BerliOS wurde vor 10 Jahren als eines der ersten Repositories in Europa
+gegr?ndet.
+Es wurde von Fraunhofer FOKUS entwickelt und gepflegt. Als ein europ?isches,
+nicht
+propriet?res Projekt verfolgt BerliOS das Ziel, die verschiedenen
+Open-Source-Akteure zu
+unterst?tzen und eine neutrale Vermittlerfunktion zu bieten. 2011 wurden
+4710 Projekte
+auf BerliOS gehosted, mit 50.000 registrierten Nutzern und ?ber 2,6
+Millionen Dateien
+Downloads jeden Monat. Wir sind stolz, dass wir mit BerliOS die Idee eines
+OSS-Repository nach Europa gebracht haben. Mittlerweile hat sich das Konzept
+durchgesetzt und es gibt zahlreiche gute Alternativen.
+
+Leider hat ein Forschungsinstitut wie Fraunhofer FOKUS nur wenig
+M?glichkeiten,
+langfristig ein Repository wie BerliOS zu betreiben. Ein solches Projekt
+funktioniert nur,
+wenn es gelingt, eine Anschlussfinanzierung zu finden, bzw. Sponsoren oder
+Partner zu
+gewinnen, die das Repository ?bernehmen. Das ist im OSS-Bereich ein
+schwieriges
+Unterfangen. In einer k?rzlich durchgef?hrten Umfrage haben wir zwar
+Unterst?tzung an
+Geldmitteln und Arbeitsleistung signalisiert bekommen, f?r die wir uns
+bedanken. Leider
+reicht das Ergebnis aber nicht aus, um das Projekt auf eine nachhaltige
+finanzielle Basis
+zu stellen. Auch die Suche nach Sponsoren oder Partnern war leider
+erfolglos.
+
+Open Source wird bei Fraunhofer FOKUS als Paradigma f?r zukunftsweisenden
+intelligenten IT-Einsatz verstanden. Es schmerzt uns deshalb um so mehr,
+dass wir
+gezwungen sind, den Betrieb von BerliOS zum 31.12.2011 einzustellen.
+
+* Als Entwickler sollten Sie Ihre BerliOS Projekte in ein anderes Repository
+exportieren.
+Alternativen siehe
+http://en.wikipedia.org/wiki/Comparison_of_open_source_software_hosting_facilities
+
+* Auf unserer Website finden Sie einen Leitfaden, wie Sie Ihre Projektdaten
+aus dem
+Portal exportieren und in einer anderen Plattform ?berf?hren k?nnen, siehe
+http://developer.berlios.de/docman/display_doc.php?docid=2055&group_id=2
+
+Fraunhofer FOKUS hat nach wie vor ein starkes Engagement f?r Open Source und
+Interoperabilit?t, engagiert sich erfolgreich in zahlreichen OSS-Projekten.
+Das Institut
+konzentriert sich auf die Entwicklung von Qualit?tsstandards f?r Open Source
+Software
+und dabei insbesondere auf die technische, semantische und organisatorische
+Interoperabilit?t zwischen einzelnen Open Source Software Komponenten sowie
+zwischen Open Source und Closed Source Software. Beispiel f?r unsere
+OSS-Aktivit?ten
+ist unter anderem unsere Leitung des deutschen QualiPSo Competence Center.
+
+Wir bedanken uns bei allen, die ?ber die Jahre BerliOS genutzt haben.
+
+Fraunhofer FOKUS
+www.fokus.fraunhofer.de
+
+
+Dear BerliOS developers and users,
+
+BerliOS was founded 10 years ago as one of the first repositories in Europe.
+It was
+developed and maintained by Fraunhofer FOKUS. As an European,
+non-proprietary
+project BerliOS pursued the goal to support the various open-source players
+and provide
+a neutral mediator function. In 2011 over 4710 projects have been hosted on
+BerliOS,
+with 50,000 registered users and over 2.6 million file downloads each month.
+We are
+proud that with BerliOS we have brought the idea of an OSS repository to
+Europe.
+Meanwhile, the concept has prevailed and there are many good alternatives.
+
+Unfortunately, as a research institute Fraunhofer FOKUS has only few
+opportunities to
+operate a repository like BerliOS. Such a project will only work with a
+follow-up financing,
+or with sponsors or partners taking over the repository. In the field of OSS
+this is a
+difficult undertaking. In a recent survey the community indicated some
+support in funds
+and manpower which we would like to thank you for. Unfortunately, the result
+is not
+enough to put the project on a sustainable financial basis. In addition the
+search for
+sponsors or partners was unsuccessful.
+
+Open Source is understood by Fraunhofer FOKUS as a paradigm for
+future-oriented
+intelligent use of IT. It hurts us all the more that we are forced to
+discontinue the hosting
+for BerliOS by 31.12.2011.
+
+* As a developer, you should export your BerliOS project into another
+repository.
+Alternatives see
+http://en.wikipedia.org/wiki/Comparison_of_open_source_software_hosting_facilities
+
+* On our site you will find a guide on how to get your project data out of
+the portal and
+migrate it in a different platform, see
+http://developer.berlios.de/docman/display_doc.php?docid=2056&group_id=2
+
+Fraunhofer FOKUS has a strong commitment to open source and
+interoperability, and is
+involved in numerous successful OSS projects. The institute focuses on the
+development
+of quality standards for open source software and in particular on the
+technical, semantic
+and organizational interoperability between open source software components
+and
+between open source and closed source software. Example of our OSS
+activities including
+our management of the German Competence Center QualiPSo.
+
+We thank all who have used BerliOS over the years.
+
+Fraunhofer FOKUS
+www.fokus.fraunhofer.de
+
+---------------------
+This email was sent from developer.berlios.de.
+To change your email receipt preferences,
+please visit the site and edit your account via the
+"Account Maintenance" link.
+
+Direct any questions to admin at berlios.de, or reply to this email.
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/klog-devel/attachments/20110930/4b3c3e6d/attachment.html>
+

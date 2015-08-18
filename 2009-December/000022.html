@@ -1,0 +1,178 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Klog-devel] Klog-devel Digest, Vol 4, Issue 1
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/klog-devel/2009-December/index.html" >
+   <LINK REL="made" HREF="mailto:klog-devel%40lists.berlios.de?Subject=Re%3A%20%5BKlog-devel%5D%20Klog-devel%20Digest%2C%20Vol%204%2C%20Issue%201&In-Reply-To=%3C28186_1260990999_4B293216_28186_23_1_200912170817.08519.andrew.goldie%40solnetsolutions.co.nz%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000021.html">
+   <LINK REL="Next"  HREF="000023.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Klog-devel] Klog-devel Digest, Vol 4, Issue 1</H1>
+    <B>Andrew Goldie</B> 
+    <A HREF="mailto:klog-devel%40lists.berlios.de?Subject=Re%3A%20%5BKlog-devel%5D%20Klog-devel%20Digest%2C%20Vol%204%2C%20Issue%201&In-Reply-To=%3C28186_1260990999_4B293216_28186_23_1_200912170817.08519.andrew.goldie%40solnetsolutions.co.nz%3E"
+       TITLE="[Klog-devel] Klog-devel Digest, Vol 4, Issue 1">andrew.goldie at solnetsolutions.co.nz
+       </A><BR>
+    <I>Wed Dec 16 20:17:08 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000021.html">[Klog-devel] KLog 0.5.0
+</A></li>
+        <LI>Next message: <A HREF="000023.html">[Klog-devel] KLog 0.5.0 RC2
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#22">[ date ]</a>
+              <a href="thread.html#22">[ thread ]</a>
+              <a href="subject.html#22">[ subject ]</a>
+              <a href="author.html#22">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Jaime,
+
+Yes comment out the DXMap, I was meaning to get the rest of the code up and 
+running but unfortunately got sidetracked! I'll work on it as time permits.
+
+I don't really know much about TLF but I'd say if we used cabrillo then we'd 
+probably be OK as that seems to be a format lots of hams use, so yes, go ahead 
+and remove it. Theres no real point in supporting legacy stuff and if anyone 
+wants it they can ask! We can even write a quick conversion program to do it 
+if needed.
+
+I redid the cabrillo import function and I added another file klog-contest-
+cabrillo-formats.txt that has the formats of any contest files. I'm hoping 
+that this will be an easy way to use add contests to klog and has the bonus 
+that it can be updated on the fly. I must admit though that I haven't fully 
+tested it. 
+
+We will also have to figure out a way of installing it in the users .klog 
+directory. Perhaps and installation script. Can Cmake handle this sort of 
+stuff?
+
+I have had a quick look at the bugs and I think I have fixed the search stuff. 
+I'm not sure though! Maybe you could have a quick look and check that it is 
+working or there is something else wrong with it that I didn't see.
+
+Are there any specific bugs you would like me to work on?
+
+Andrew
+
+On Thu, 17 Dec 2009 00:01:22 <A HREF="https://lists.berlios.de/mailman/listinfo/klog-devel">klog-devel-request at lists.berlios.de</A> wrote:
+&gt;<i> Send Klog-devel mailing list submissions to
+</I>&gt;<i> 	<A HREF="https://lists.berlios.de/mailman/listinfo/klog-devel">klog-devel at lists.berlios.de</A>
+</I>&gt;<i> 
+</I>&gt;<i> To subscribe or unsubscribe via the World Wide Web, visit
+</I>&gt;<i> 	<A HREF="https://lists.berlios.de/mailman/listinfo/klog-devel">https://lists.berlios.de/mailman/listinfo/klog-devel</A>
+</I>&gt;<i> or, via email, send a message with subject or body 'help' to
+</I>&gt;<i> 	<A HREF="https://lists.berlios.de/mailman/listinfo/klog-devel">klog-devel-request at lists.berlios.de</A>
+</I>&gt;<i> 
+</I>&gt;<i> You can reach the person managing the list at
+</I>&gt;<i> 	<A HREF="https://lists.berlios.de/mailman/listinfo/klog-devel">klog-devel-owner at lists.berlios.de</A>
+</I>&gt;<i> 
+</I>&gt;<i> When replying, please edit your Subject line so it is more specific
+</I>&gt;<i> than &quot;Re: Contents of Klog-devel digest...&quot;
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Today's Topics:
+</I>&gt;<i> 
+</I>&gt;<i>    1. KLog 0.5.0 (Jaime Robles)
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> ----------------------------------------------------------------------
+</I>&gt;<i> 
+</I>&gt;<i> Message: 1
+</I>&gt;<i> Date: Tue, 15 Dec 2009 20:58:44 +0100 (CET)
+</I>&gt;<i> From: &quot;Jaime Robles&quot; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/klog-devel">jaime at robles.es</A>&gt;
+</I>&gt;<i> Subject: [Klog-devel] KLog 0.5.0
+</I>&gt;<i> To: <A HREF="https://lists.berlios.de/mailman/listinfo/klog-devel">klog-devel at lists.berlios.de</A>
+</I>&gt;<i> Message-ID:
+</I>&gt;<i> 	&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/klog-devel">0cbdaa793cb96e6d1553d090215061c6.squirrel at correo.robles.es</A>&gt;
+</I>&gt;<i> Content-Type: text/plain;charset=iso-8859-1
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Good evening (here) Andrew,
+</I>&gt;<i> 
+</I>&gt;<i> I am thinking on releasing KLog 0.5.0n as fast as we can... but at late in
+</I>&gt;<i> 2009. :-)
+</I>&gt;<i> 
+</I>&gt;<i> In the code I am working with I have commented out the DXMap code... I
+</I>&gt;<i> really think it is a GOOD idea but we should not add it until we have the
+</I>&gt;<i> 0.5.0 released with no new features.
+</I>&gt;<i> 
+</I>&gt;<i> Maybe we could release when we have closed all the pending bugs as they
+</I>&gt;<i> are today and any other that appears these days.
+</I>&gt;<i> 
+</I>&gt;<i> Once we have the 0.5.0 working and released we can start coding new
+</I>&gt;<i> features. Do you agree?
+</I>&gt;<i> 
+</I>&gt;<i> Some questions:
+</I>&gt;<i> 
+</I>&gt;<i> What do you think about the importTLF function? Do you think it is still
+</I>&gt;<i> needed? TLF is not under active development so I'm afraid that there will
+</I>&gt;<i> not be many hams missing a way to import from tlf to KLog.
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Bugs
+</I>&gt;<i> <A HREF="https://developer.berlios.de/bugs/?group_id=608">https://developer.berlios.de/bugs/?group_id=608</A>
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> However, check the AUTHORS file check if you want  your email, callsign or
+</I>&gt;<i> whatever you want.
+</I>&gt;<i> 
+</I>&gt;<i> Jaime
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> ------------------------------
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Klog-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/klog-devel">Klog-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/klog-devel">https://lists.berlios.de/mailman/listinfo/klog-devel</A>
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> End of Klog-devel Digest, Vol 4, Issue 1
+</I>&gt;<i> ****************************************
+</I>&gt;<i> 
+</I>
+
+Attention:
+This email may contain information intended for the sole use of
+the original recipient. Please respect this when sharing or
+disclosing this email's contents with any third party. If you
+believe you have received this email in error, please delete it
+and notify the sender or <A HREF="https://lists.berlios.de/mailman/listinfo/klog-devel">postmaster at solnetsolutions.co.nz</A> as
+soon as possible. The content of this email does not necessarily
+reflect the views of Solnet Solutions Ltd.
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000021.html">[Klog-devel] KLog 0.5.0
+</A></li>
+	<LI>Next message: <A HREF="000023.html">[Klog-devel] KLog 0.5.0 RC2
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#22">[ date ]</a>
+              <a href="thread.html#22">[ thread ]</a>
+              <a href="subject.html#22">[ subject ]</a>
+              <a href="author.html#22">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/klog-devel">More information about the Klog-devel
+mailing list</a><br>
+</body></html>

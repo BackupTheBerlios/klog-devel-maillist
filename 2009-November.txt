@@ -1,0 +1,48 @@
+From jaime at robles.es  Thu Nov 26 15:51:57 2009
+From: jaime at robles.es (Jaime Robles)
+Date: Thu, 26 Nov 2009 15:51:57 +0100 (CET)
+Subject: [Klog-devel] KLog 0.5.0 in a few days... Translations needed
+Message-ID: <e2cfe873a1b060ff5e52f7e70229933f.squirrel@correo.robles.es>
+
+Good afternoon,
+
+During last summer I started the migration of KLog to the new Qt4.[1]
+
+It is not being easy but I have received a VERY valuable help of Andrew,
+who joined the KLog's development team and we changed some things of the
+development mode of KLog[2].
+
+Anyway, KLog 0.5.0 is not far from be ready for distribution and I am
+writting this email to request your help with the translation of KLog.
+
+You will be able to find the PO/POT files in the SVN server of KLog[3]
+
+If you have some spare time and you want to help KLog a lot of users will
+thank you.
+
+I still don't have a final date for KLog... I want to close some bugs[4]
+before releasing the QT port of KLog although I think I will not close all
+bugs before releasing, just the most "criticals" and any bug that may
+cause data loss or data corruption.
+
+You can download KLog from the SVN and start testing it. I will be happy
+to receive all your comments.
+
+Thank you very much for your help.
+
+
+[1] http://jaime.robles.es/blog/rewritting-klog-for-kde4/
+[2] http://jaime.robles.es/blog/klog-050-on-the-way/
+[3] http://svn.berlios.de/wsvn/klog/trunk/po/#_trunk_po_
+[4] http://developer.berlios.de/bugs/?group_id=608
+
+-- 
+Un saludo,
+	Jaime Robles, EA4TV
+	jaime at robles.es
+
+Visita:
+   http://jaime.robles.es
+
+
+

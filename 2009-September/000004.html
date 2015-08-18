@@ -1,0 +1,151 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Klog-devel] [Fwd: [Klog-svn] r35 - trunk/src]
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/klog-devel/2009-September/index.html" >
+   <LINK REL="made" HREF="mailto:klog-devel%40lists.berlios.de?Subject=Re%3A%20%5BKlog-devel%5D%20%5BFwd%3A%20%5BKlog-svn%5D%20r35%20-%20trunk/src%5D&In-Reply-To=%3Caad924965fc085855bb206c9c4e5393e.squirrel%40correo.robles.es%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000003.html">
+   <LINK REL="Next"  HREF="000005.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Klog-devel] [Fwd: [Klog-svn] r35 - trunk/src]</H1>
+    <B>Jaime Robles</B> 
+    <A HREF="mailto:klog-devel%40lists.berlios.de?Subject=Re%3A%20%5BKlog-devel%5D%20%5BFwd%3A%20%5BKlog-svn%5D%20r35%20-%20trunk/src%5D&In-Reply-To=%3Caad924965fc085855bb206c9c4e5393e.squirrel%40correo.robles.es%3E"
+       TITLE="[Klog-devel] [Fwd: [Klog-svn] r35 - trunk/src]">jaime at robles.es
+       </A><BR>
+    <I>Wed Sep 30 17:28:14 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000003.html">[Klog-devel] [Fwd: [Klog-svn] r35 - trunk/src]
+</A></li>
+        <LI>Next message: <A HREF="000005.html">[Klog-devel] Klog-devel Digest, Vol 1, Issue 134
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#4">[ date ]</a>
+              <a href="thread.html#4">[ thread ]</a>
+              <a href="subject.html#4">[ subject ]</a>
+              <a href="author.html#4">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello,
+I have just tested the new code and I don't agree with this modification,
+I am sorry.
+
+In increases the logfile 5 times:
+Before running KLog: 2606656 sep 22 19:02 klog.adi
+After running Klog: 12647223 sep 30 17:18 klog.adi
+
+So reading the log is much slower than before. It also generates several
+errors in the log (creates the AF-0 IOTA for every record, sets wrong
+powers and frecuencies. I suggest to go back with this and restablish the
+log writting as it was before.
+
+I will try to upload new code this afternoon.
+
+
+
+&gt;<i> I still have not tested this R35 update but I don't agree to remove the
+</I>&gt;<i> &quot;if&quot; statements as it will (as you already said) increase the logfile with
+</I>&gt;<i> no useful information.
+</I>
+
+
+&gt;<i>
+</I>&gt;<i> Reading the logfile will be a longer process as it will have to read ALL
+</I>&gt;<i> the tags.
+</I>&gt;<i> ADIF files are sometime edited by the user with a text editor... we should
+</I>&gt;<i> keep them easy to read/understand.
+</I>&gt;<i>
+</I>&gt;<i> The specification[1] does not forbid what you are proposing but I think it
+</I>&gt;<i> would not be a best practice.
+</I>&gt;<i> If you think that we should improve the writting speed... IMHO we should
+</I>&gt;<i> think how to optimize the function but keeping the log short and concise,
+</I>&gt;<i> with all the needed data but simple and &quot;good looking&quot; :-)
+</I>&gt;<i>
+</I>&gt;<i> Regarding the TODO... maybe we should manage this in the TODO file, or
+</I>&gt;<i> maybe using a bug tracker... I think Berlios offers one.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> [1] <A HREF="http://www.adif.org/adif223.htm">http://www.adif.org/adif223.htm</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i> Un saludo,
+</I>&gt;<i> 	Jaime Robles, EA4TV
+</I>&gt;<i> 	<A HREF="https://lists.berlios.de/mailman/listinfo/klog-devel">jaime at robles.es</A>
+</I>&gt;<i>
+</I>&gt;<i> Visita:
+</I>&gt;<i>    <A HREF="http://jaime.robles.es">http://jaime.robles.es</A>
+</I>&gt;<i>
+</I>&gt;<i> ---------------------------- Mensaje original ----------------------------
+</I>&gt;<i> Asunto: [Klog-svn] r35 - trunk/src
+</I>&gt;<i> De:     &quot;agoldie at BerliOS&quot; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/klog-devel">agoldie at mail.berlios.de</A>&gt;
+</I>&gt;<i> Fecha:  Mie, 30 de Septiembre de 2009, 10:11 am
+</I>&gt;<i> Para:   <A HREF="https://lists.berlios.de/mailman/listinfo/klog-devel">klog-svn at lists.berlios.de</A>
+</I>&gt;<i> --------------------------------------------------------------------------
+</I>&gt;<i>
+</I>&gt;<i> Author: agoldie
+</I>&gt;<i> Date: 2009-09-30 10:11:16 +0200 (Wed, 30 Sep 2009)
+</I>&gt;<i> New Revision: 35
+</I>&gt;<i>
+</I>&gt;<i> Modified:
+</I>&gt;<i>    trunk/src/klog.cpp
+</I>&gt;<i>    trunk/src/klog.ui
+</I>&gt;<i> Log:
+</I>&gt;<i> Connected slot to delete QSO's
+</I>&gt;<i> Changed Save log to remove all the if statements. Makes the log file
+</I>&gt;<i> bigger but makes saving quicker.
+</I>&gt;<i>
+</I>&gt;<i> TODO
+</I>&gt;<i> when there is only 1 QSO the deleteing it crashes KLOG
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Klog-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/klog-devel">Klog-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/klog-devel">https://lists.berlios.de/mailman/listinfo/klog-devel</A>
+</I>&gt;<i>
+</I>
+
+-- 
+Un saludo,
+	Jaime Robles, EA4TV
+	<A HREF="https://lists.berlios.de/mailman/listinfo/klog-devel">jaime at robles.es</A>
+
+Visita:
+   <A HREF="http://jaime.robles.es">http://jaime.robles.es</A>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000003.html">[Klog-devel] [Fwd: [Klog-svn] r35 - trunk/src]
+</A></li>
+	<LI>Next message: <A HREF="000005.html">[Klog-devel] Klog-devel Digest, Vol 1, Issue 134
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#4">[ date ]</a>
+              <a href="thread.html#4">[ thread ]</a>
+              <a href="subject.html#4">[ subject ]</a>
+              <a href="author.html#4">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/klog-devel">More information about the Klog-devel
+mailing list</a><br>
+</body></html>

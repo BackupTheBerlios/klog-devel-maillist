@@ -1,0 +1,213 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Klog-devel] Dxcluster options
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/klog-devel/2009-October/index.html" >
+   <LINK REL="made" HREF="mailto:klog-devel%40lists.berlios.de?Subject=Re%3A%20%5BKlog-devel%5D%20Dxcluster%20options&In-Reply-To=%3C31888_1254942934_4ACCE8D6_31888_90_1_200910080815.38568.andrew.goldie%40solnetsolutions.co.nz%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000014.html">
+   <LINK REL="Next"  HREF="000016.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Klog-devel] Dxcluster options</H1>
+    <B>Andrew Goldie</B> 
+    <A HREF="mailto:klog-devel%40lists.berlios.de?Subject=Re%3A%20%5BKlog-devel%5D%20Dxcluster%20options&In-Reply-To=%3C31888_1254942934_4ACCE8D6_31888_90_1_200910080815.38568.andrew.goldie%40solnetsolutions.co.nz%3E"
+       TITLE="[Klog-devel] Dxcluster options">andrew.goldie at solnetsolutions.co.nz
+       </A><BR>
+    <I>Wed Oct  7 21:15:38 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000014.html">[Klog-devel] Comments on sqllite, dxcluster and some more...
+</A></li>
+        <LI>Next message: <A HREF="000016.html">[Klog-devel] Dxcluster options
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#15">[ date ]</a>
+              <a href="thread.html#15">[ thread ]</a>
+              <a href="subject.html#15">[ subject ]</a>
+              <a href="author.html#15">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Jaime,
+
+Yes I was thinking about the cluster options. I think probably one of the 
+easist is to use a QListWidget. This has an insertItem() funtion:
+
+void insertItem ( int row, QListWidgetItem * item )
+void insertItem ( int row, const QString &amp; label )
+void insertItems ( int row, const QStringList &amp; labels )
+
+With this we can always insert data at the top of the list by using:
+
+QListWidgetItem *DXItem = new QListWidgetItem;
+DXItem-&gt;setText(dxData);
+dxclusterListWidget-&gt;insertItem(0,  DXItem);
+
+The 0 being the top of the listwidget. I have done this before and it works 
+well. 
+
+I have also noticed that there is an error in here somewhere that crashes the 
+program. It is a very weird one and it only appears sometimes. Its got 
+something to do with QString I think the messages are similar to this:
+
+ASSERT: &quot;i &gt;= 0 &amp;&amp; i &lt; size()&quot; in file /usr/include/qt4/QtCore/qstring.h
+
+I not sure why this error happens but I have done a little bit of 
+investigation and I think it has something to do identfying where the 
+callsigns come from, possibly the world class.
+
+Should we change the QTreeWidget to a QListWidget and use the insertItem(row, 
+item) function?
+
+Andrew
+
+
+On Wed, 07 Oct 2009 23:01:41 <A HREF="https://lists.berlios.de/mailman/listinfo/klog-devel">klog-devel-request at lists.berlios.de</A> wrote:
+&gt;<i> Send Klog-devel mailing list submissions to
+</I>&gt;<i> 	<A HREF="https://lists.berlios.de/mailman/listinfo/klog-devel">klog-devel at lists.berlios.de</A>
+</I>&gt;<i>
+</I>&gt;<i> To subscribe or unsubscribe via the World Wide Web, visit
+</I>&gt;<i> 	<A HREF="https://lists.berlios.de/mailman/listinfo/klog-devel">https://lists.berlios.de/mailman/listinfo/klog-devel</A>
+</I>&gt;<i> or, via email, send a message with subject or body 'help' to
+</I>&gt;<i> 	<A HREF="https://lists.berlios.de/mailman/listinfo/klog-devel">klog-devel-request at lists.berlios.de</A>
+</I>&gt;<i>
+</I>&gt;<i> You can reach the person managing the list at
+</I>&gt;<i> 	<A HREF="https://lists.berlios.de/mailman/listinfo/klog-devel">klog-devel-owner at lists.berlios.de</A>
+</I>&gt;<i>
+</I>&gt;<i> When replying, please edit your Subject line so it is more specific
+</I>&gt;<i> than &quot;Re: Contents of Klog-devel digest...&quot;
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Today's Topics:
+</I>&gt;<i>
+</I>&gt;<i>    1. Comments on sqllite, dxcluster and some more... (Jaime Robles)
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> ----------------------------------------------------------------------
+</I>&gt;<i>
+</I>&gt;<i> Message: 1
+</I>&gt;<i> Date: Tue, 6 Oct 2009 20:18:31 +0200 (CEST)
+</I>&gt;<i> From: &quot;Jaime Robles&quot; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/klog-devel">jaime at robles.es</A>&gt;
+</I>&gt;<i> Subject: [Klog-devel] Comments on sqllite, dxcluster and some more...
+</I>&gt;<i> To: <A HREF="https://lists.berlios.de/mailman/listinfo/klog-devel">klog-devel at lists.berlios.de</A>
+</I>&gt;<i> Message-ID:
+</I>&gt;<i> 	&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/klog-devel">b16d53d439f393a81aa35ebb1c08a256.squirrel at correo.robles.es</A>&gt;
+</I>&gt;<i> Content-Type: text/plain;charset=iso-8859-1
+</I>&gt;<i>
+</I>&gt;<i> &gt;&gt; When I started KLog I considered using a DB to save the QSOs.
+</I>&gt;<i> &gt;&gt; The reason for discarding that option was to make KLog as much
+</I>&gt;<i> &gt;&gt; &quot;independant&quot; of other software as possible and avoid all the
+</I>&gt;<i> &gt;&gt; configurations problems for the users as possible.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Yes this is true but I was perhaps thinking of a DB linu sqllite ot
+</I>&gt;<i> &gt; Berkley DB
+</I>&gt;<i> &gt; with is really just a set of libraries available on most Linux boxes. Or
+</I>&gt;<i> &gt; this could be statically linked to the executable.
+</I>&gt;<i>
+</I>&gt;<i> Ok.
+</I>&gt;<i> I did not know sqllite nor Berkley DB... I was that you were proposing
+</I>&gt;<i> something like mysql or postgresql... ;-)
+</I>&gt;<i> Let me read a bit about that and check for implications that this may
+</I>&gt;<i> have. Today KLog works ok without sqllite... and I wouldn't like to limit
+</I>&gt;<i> the portability to MS-Windows :-| as I told you I am planning to reach
+</I>&gt;<i> Windows users too in a near future.
+</I>&gt;<i>
+</I>&gt;<i> I have done a very quick check for sqllite and it seems that it is also
+</I>&gt;<i> supported in windows systems so that would not be a great problem.
+</I>&gt;<i> Anyway, this would be a big change. Maybe we can add it to the future
+</I>&gt;<i> feature list and plan it in a future release... at least as a test. :-)
+</I>&gt;<i>
+</I>&gt;<i> &gt;&gt;  2.- be a way to show&amp;promote free software and KDE to MS Windows.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Yes this fairly easy with a straight QT project, I have done it a few
+</I>&gt;<i> &gt; times.
+</I>&gt;<i> &gt; In fact all that has to be done to run is for it to be compiled on a
+</I>&gt;<i> &gt; windows box and a small DLL included with the exe file.
+</I>&gt;<i>
+</I>&gt;<i> Great.
+</I>&gt;<i> I have no experience on that.
+</I>&gt;<i>
+</I>&gt;<i> &gt; The problem with KLog is that it includes some KDE and possibly some
+</I>&gt;<i> &gt; hamlib stuff that will not compile on windows.
+</I>&gt;<i>
+</I>&gt;<i> You are right again.
+</I>&gt;<i> I did some reading some months ago... and it seems that for a Windows
+</I>&gt;<i> port, we should use some compiler directives or something like that to
+</I>&gt;<i> avoid trying to add hamlib support in the windows compilation.
+</I>&gt;<i>
+</I>&gt;<i> I still don't know how to add hamlib-like features to a windows code...
+</I>&gt;<i> but today I don't care. Maybe we can add a windows coder to do that part
+</I>&gt;<i> when KLog is available for win systems ;-)
+</I>&gt;<i>
+</I>&gt;<i> &gt; I see that you are using a QTreeWdiget as the main display widget, can I
+</I>&gt;<i> &gt; ask
+</I>&gt;<i> &gt; why you chose that over a QTableWidget which has a few more functions
+</I>&gt;<i> &gt; that would make some stuff a little bit easier?
+</I>&gt;<i>
+</I>&gt;<i> I have no idea O:-)
+</I>&gt;<i> I was reading and checking the classes docs and I saw the QTreeWidget
+</I>&gt;<i> class... it was the most similar class to the QListView class that I was
+</I>&gt;<i> using in Qt3 so I directly migrated to QTreeWidget.
+</I>&gt;<i> I think that QTreeWidget may be very fast if we create and work with QList
+</I>&gt;<i> class and then we call the QTreeWidget just for showing the data but it is
+</I>&gt;<i> again another optimization.
+</I>&gt;<i>
+</I>&gt;<i> Maybe using a QTableWidget is also a good idea as we could (I am just
+</I>&gt;<i> guessing) allow the users to (quickly)edit the data directly through the
+</I>&gt;<i> QTableWidget...
+</I>&gt;<i> Again: we should add this to the TODO list and plan it to future releases.
+</I>&gt;<i>
+</I>&gt;<i> Today I had no time for coding.. :-(
+</I>&gt;<i> How do you think can we solve the fact that data comming from the
+</I>&gt;<i> dxcluster is hidden as soon as new data arrives from the network?
+</I>&gt;<i> It is not very confortable and it is a downgrade from previous (qt3) klog
+</I>&gt;<i> release :-\
+</I>&gt;<i>
+</I>&gt;<i> I am thinking of finding the way to insert instead of add the DXSpots and
+</I>&gt;<i> then setting the &quot;focus&quot; to the first element on the list, the top-one but
+</I>&gt;<i> I still haven't found how to do it.
+</I>&gt;<i>
+</I>&gt;<i> Do you have any other idea?
+</I>
+
+
+Attention:
+This email may contain information intended for the sole use of
+the original recipient. Please respect this when sharing or
+disclosing this email's contents with any third party. If you
+believe you have received this email in error, please delete it
+and notify the sender or <A HREF="https://lists.berlios.de/mailman/listinfo/klog-devel">postmaster at solnetsolutions.co.nz</A> as
+soon as possible. The content of this email does not necessarily
+reflect the views of Solnet Solutions Ltd.
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000014.html">[Klog-devel] Comments on sqllite, dxcluster and some more...
+</A></li>
+	<LI>Next message: <A HREF="000016.html">[Klog-devel] Dxcluster options
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#15">[ date ]</a>
+              <a href="thread.html#15">[ thread ]</a>
+              <a href="subject.html#15">[ subject ]</a>
+              <a href="author.html#15">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/klog-devel">More information about the Klog-devel
+mailing list</a><br>
+</body></html>
